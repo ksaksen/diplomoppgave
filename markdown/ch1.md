@@ -13,7 +13,9 @@ The main purpose of this theory chapter is to show how one can go from the simpl
 In this section I will show how the wave function for an electron which is passing through a potential barrier in one dimension can be expressed by the reflection and transmission amplitudes $r(k)$ and $t(k)$. I will also show how the amplitudes $r$ and $t$ are expressed by the wave function on the surface between different semiconductors, or less specifically, how the amplitudes are expressed by means of the boundary conditions of the potential barrier. We start with the time-dependent Schrödinger equation:
 
 $$
+\begin{equation}
 H\Psi = i\hbar \frac{\partial}{\partial t}\Psi \tag{1.1}
+\end{equation}
 $$
 
 Here is
