@@ -20,12 +20,12 @@ def fix_markdown_math(file_path):
     # Behandler inline-math ($...$) og block-math ($$...$$) separat via en felles regex.
     # Matcher ^* kun der * IKKE allerede er inni {}, dvs. ikke ^{*} allerede.
     def fix_caret_star(math_content):
-        # Beskytt allerede innpakkede ^{*} med en placeholder
-        protected = math_content.replace('^{*}', '\x00CARET_STAR\x00')
-        # Erstatt alle gjenværende nakne ^* med ^{*}
-        fixed = protected.replace('^*', '^{*}')
+        # Beskytt allerede innpakkede ^{\ast} med en placeholder
+        protected = math_content.replace('^{\\ast}', '\x00CARET_STAR\x00')
+        # Erstatt alle gjenværende nakne ^* og ^{*} med ^{\ast}
+        fixed = protected.replace('^{*}', '^{\\ast}').replace('^*', '^{\\ast}')
         # Gjenopprett placeholder
-        return fixed.replace('\x00CARET_STAR\x00', '^{*}')
+        return fixed.replace('\x00CARET_STAR\x00', '^{\\ast}')
 
     # Fiks i inline $...$ (ikke $$) — negativ lookbehind/ahead for å unngå $$
     content = re.sub(
