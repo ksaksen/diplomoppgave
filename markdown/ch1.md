@@ -103,12 +103,12 @@ Figure 1.2 illustrates how the $x$ continuum is changed to a set of discrete poi
 
 Figure 1.2: A picture of a potential barrier when the transport direction is changed from a continuum to a discrete set of points.
 
-In the model I am going to use, the electrons can only move via hopping between neighbor layers in the structure. The hopping matrix element $u$ is connected to the probability for hopping from one layer to its closest neighbor in the transmission direction. The complex conjugated $u^*$ is connected to the probability for hopping the opposite direction. $V(x)$ has nonzero values only in the discrete points $j$.
+In the model I am going to use, the electrons can only move via hopping between neighbor layers in the structure. The hopping matrix element $u$ is connected to the probability for hopping from one layer to its closest neighbor in the transmission direction. The complex conjugated $u^{*}$ is connected to the probability for hopping the opposite direction. $V(x)$ has nonzero values only in the discrete points $j$.
 
 In general we can write the Hamiltonian for a system set up by discrete points like this, figure 1.2, as a sum of contributions with hopping matrix elements $u$ and local energy eigenvalues $\epsilon_j$.
 
 $$
-H = \sum_j [\vert j \rangle \epsilon_j \langle j \vert + \vert j \rangle u \langle j+1 \vert + \vert j \rangle u^* \langle j-1 \vert] \quad (1.12)
+H = \sum_j [\vert j \rangle \epsilon_j \langle j \vert + \vert j \rangle u \langle j+1 \vert + \vert j \rangle u^{*} \langle j-1 \vert] \quad (1.12)
 $$
 
 10
@@ -122,7 +122,7 @@ Here, equation 1.12, the contribution of the hopping matrix elements gives us th
 In this subsection I will use my knowledge about simple homogeneous discrete systems, specifically the Hamiltonian of such systems to try to obtain a feeling of what the physical content of the hopping matrix element is. I start by setting up the time independent Schrödinger equation for the discrete system and then of course with the Hamiltonian given in equation 1.12.
 
 $$
-H|\Phi_k\rangle = \left( \sum_m \left( |m\rangle \epsilon_0 \langle m| + |m\rangle u \langle m+1| + |m\rangle u^* \langle m-1| \right) \right) \cdot \left( \sum_j \exp(ikja)|j\rangle \right) = E_k|\Phi_k\rangle \quad (1.13)
+H|\Phi_k\rangle = \left( \sum_m \left( |m\rangle \epsilon_0 \langle m| + |m\rangle u \langle m+1| + |m\rangle u^{*} \langle m-1| \right) \right) \cdot \left( \sum_j \exp(ikja)|j\rangle \right) = E_k|\Phi_k\rangle \quad (1.13)
 $$
 
 As the system is homogeneous it is here correct to use the energy $\epsilon_0$ overall and to use the Bloch like eigenstates.
@@ -130,19 +130,19 @@ As the system is homogeneous it is here correct to use the energy $\epsilon_0$ o
 Setting $m$ equal to $m_0$ in equation 1.13, that is, looking specifically on atom number $m_0$, or, more precise, atomic layer number $m_0$, we obtain equation 1.14.
 
 $$
-E_k \exp(ikm_0 a) = \epsilon_0 \exp(ikm_0 a) + u \exp(ik(m_0+1)a) + u^* \exp(ik(m_0-1)a) \quad (1.14)
+E_k \exp(ikm_0 a) = \epsilon_0 \exp(ikm_0 a) + u \exp(ik(m_0+1)a) + u^{*} \exp(ik(m_0-1)a) \quad (1.14)
 $$
 
 This because $\langle m | j \rangle = \delta_{mj}$ i.e. equals 1 for $j=m$ and 0 otherwise. Hence,
 
 $$
-|m_0\rangle \exp(ikm_0 a)[\epsilon_0 + u \exp(ika) + u^* \exp(-ika)] = |m_0\rangle \exp(ikm_0 a)E_k \quad (1.15)
+|m_0\rangle \exp(ikm_0 a)[\epsilon_0 + u \exp(ika) + u^{*} \exp(-ika)] = |m_0\rangle \exp(ikm_0 a)E_k \quad (1.15)
 $$
 
 *and therefore,*
 
 $$
-E_k = \epsilon_0 + u \exp(ika) + u^* \exp(-ika) \quad (1.16)
+E_k = \epsilon_0 + u \exp(ika) + u^{*} \exp(-ika) \quad (1.16)
 $$
 
 This is the expression for the discrete energy eigenvalues for particles moving between lattice points in a homogeneous lattice (this still means nothing else than keeping $\epsilon_j = \epsilon_0$ for all $j$), through hopping processes. And then through hopping processes that is characterised by the hopping matrix elements $u$. For a homogeneous system the electrons in the conduction bands have continuous $\vec{k}$ and the energy eigenvalues of such particles are also continuous, and take values equal to the square of the momentum divided with the mass twice.
@@ -150,7 +150,7 @@ This is the expression for the discrete energy eigenvalues for particles moving 
 The hopping matrix element $u$, that gives an expression for the hopping probability between $\vec{r}$ and $\vec{r} + \vec{R}$ is given as;
 
 $$
-u = \int d\vec{r} \Psi^*(\vec{r}) H \Psi(\vec{r} + \vec{R}) \sim \exp(i\phi) \quad (1.17)
+u = \int d\vec{r} \Psi^{*}(\vec{r}) H \Psi(\vec{r} + \vec{R}) \sim \exp(i\phi) \quad (1.17)
 $$
 
 11
@@ -184,13 +184,13 @@ $$
 Through comparing the expression for the energy in the center of the Brillouin zone and the energy of a free electron we obtain an expression for the effective mass of the electrons close to the Brillouin zone center:
 
 $$
-\frac{\hbar^2 k^2}{2m^*} = |u|a^2k^2.
+\frac{\hbar^2 k^2}{2m^{*}} = |u|a^2k^2.
 $$
 
 This gives meaning to the hopping matrix element $u$; it is inversely proportional to the effective mass and the square of the unit cell constant, and it is also proportional to the square of $\hbar$:
 
 $$
-|u| = \frac{\hbar^2}{2m^*a^2}. \quad (1.21)
+|u| = \frac{\hbar^2}{2m^{*}a^2}. \quad (1.21)
 $$
 
 This is valid for electrons in the valence band with wavelength $\lambda$ so that
@@ -591,7 +591,7 @@ $$
 We have then expressed the reflection and transmission coefficients by means of the Green function; as we wanted. As we first are dealing with observables we might for example look at the current density $j(x)$:
 
 $$
-j(x) = \frac{e\hbar}{2im} \left( \Phi^*(x) \frac{\partial\Phi(x)}{\partial x} - \frac{\partial\Phi(x)^*}{\partial x} \Phi(x) \right). \quad (1.54)
+j(x) = \frac{e\hbar}{2im} \left( \Phi^{*}(x) \frac{\partial\Phi(x)}{\partial x} - \frac{\partial\Phi(x)^{*}}{\partial x} \Phi(x) \right). \quad (1.54)
 $$
 
 The operator which belongs to $j(x)$ is identical to the velocity operator.
@@ -630,13 +630,13 @@ $$
 Through multiplication with the state vector $\vert \Phi \rangle$ and its adjoint $\langle \Phi \vert$ we get the current density expectation value:
 
 $$
-j_{i,i+1} = \frac{eiua^2}{\hbar} \left(\Phi_i^* \frac{\partial \Phi_i}{\partial x} - \frac{\partial \Phi_i^*}{\partial x} \Phi_i \right) \quad (1.58)
+j_{i,i+1} = \frac{eiua^2}{\hbar} \left(\Phi_i^{*} \frac{\partial \Phi_i}{\partial x} - \frac{\partial \Phi_i^{*}}{\partial x} \Phi_i \right) \quad (1.58)
 $$
 
 by use of the assumption that $\partial \Phi_i/\partial x \approx \Phi_{i+1} - \Phi_i / a$. Further we use the dispersion relation $E_k = -2u + 2u \cos(ka) \approx -uk^2a^2$ as $ka \ll 1$, then from the definition $E_k = \hbar^2 k^2 / 2m$ we get an expression for $u$; $u \approx -\hbar^2/2ma^2$. This yields
 
 $$
-\tilde{j}_{i,i+1} = -\frac{i\hbar}{2m} \left(\Phi_i^* \frac{\partial \Phi_i}{\partial x} - \frac{\partial \Phi_i^*}{\partial x} \Phi_i \right), \quad (1.59)
+\tilde{j}_{i,i+1} = -\frac{i\hbar}{2m} \left(\Phi_i^{*} \frac{\partial \Phi_i}{\partial x} - \frac{\partial \Phi_i^{*}}{\partial x} \Phi_i \right), \quad (1.59)
 $$
 
 in agreement with the continuum expression 1.54.
@@ -699,7 +699,7 @@ In short, we got expressions for the four independent vectors in the two differe
 
 ### 1.6.2 Basis for eigenfunctions
 
-From the one-dimensional case we had a state vector $\vert j \rangle$ with properties $\sum_j \vert j \rangle \langle j \vert = 1$ and $\langle j \vert i \rangle = \delta_{ij}$. The state vector in the 3-D multiband system is written such that one gets information on what lattice point the vector element is related to; that is where it is in the structure, about the kind of layer involved; anion or cation and what kind of orbital it is related to. The notation might look like this: $\vert n, b, \vec{R}_j \rangle$. Here $n$ gives information about the kind of orbital: $s, px, py, pz$ or $s^*$, $b$ might be either cation or anion and $\vec{R}_j$ is the position in the lattice. These state vectors have the same properties as the $\vert j \rangle$ from the 1-D single band version: $\langle n', b', \vec{R}_j' \vert n, b, \vec{R}_j \rangle$ is one for $n' = n$, $b' = b$ and $\vec{R}_j' = \vec{R}_j$ and it is zero otherwise. $\sum_{n,b,j} \vert n, b, \vec{R}_j \rangle \langle n, b, \vec{R}_j \vert = 1$.
+From the one-dimensional case we had a state vector $\vert j \rangle$ with properties $\sum_j \vert j \rangle \langle j \vert = 1$ and $\langle j \vert i \rangle = \delta_{ij}$. The state vector in the 3-D multiband system is written such that one gets information on what lattice point the vector element is related to; that is where it is in the structure, about the kind of layer involved; anion or cation and what kind of orbital it is related to. The notation might look like this: $\vert n, b, \vec{R}_j \rangle$. Here $n$ gives information about the kind of orbital: $s, px, py, pz$ or $s^{*}$, $b$ might be either cation or anion and $\vec{R}_j$ is the position in the lattice. These state vectors have the same properties as the $\vert j \rangle$ from the 1-D single band version: $\langle n', b', \vec{R}_j' \vert n, b, \vec{R}_j \rangle$ is one for $n' = n$, $b' = b$ and $\vec{R}_j' = \vec{R}_j$ and it is zero otherwise. $\sum_{n,b,j} \vert n, b, \vec{R}_j \rangle \langle n, b, \vec{R}_j \vert = 1$.
 
 ### 1.6.3 The Hamiltonian.
 
@@ -710,7 +710,7 @@ H = \sum_j \vert j \rangle \epsilon_0 \langle j \vert + \vert j \rangle u \langl
 $$
 
 (1.63)
-In the $sp^3s^*$ model, see article [1], we have 13 independent matrix elements:
+In the $sp^3s^{*}$ model, see article [1], we have 13 independent matrix elements:
 
 20
 <!-- SLUTT SIDE 14 -->
@@ -721,27 +721,27 @@ $$
 \begin{aligned}
 E(s,a) &= \langle s, a, \tilde{R} | H | s, a, \tilde{R} \rangle \\
 E(p,a) &= \langle p, a, \tilde{R} | H | p, a, \tilde{R} \rangle \\
-E(s^*,a) &= \langle s^*, a, \tilde{R} | H | s^*, a, \tilde{R} \rangle \\
+E(s^{*},a) &= \langle s^{*}, a, \tilde{R} | H | s^{*}, a, \tilde{R} \rangle \\
 E(s,c) &= \langle s, c, \tilde{R} | H | s, c, \tilde{R} \rangle \\
 E(p,c) &= \langle p, c, \tilde{R} | H | p, c, \tilde{R} \rangle \\
-E(s^*,c) &= \langle s^*, c, \tilde{R} | H | s^*, c, \tilde{R} \rangle \\
+E(s^{*},c) &= \langle s^{*}, c, \tilde{R} | H | s^{*}, c, \tilde{R} \rangle \\
 V(s,s) &= 4 \langle s, a, \tilde{R} | H | s, c, \tilde{R} \rangle \\
 V(px,px) &= 4 \langle px, a, \tilde{R} | H | px, c, \tilde{R} \rangle \\
 V(px,py) &= 4 \langle px, a, \tilde{R} | H | py, c, \tilde{R} \rangle \\
 V(sa,pxc) &= 4 \langle s, a, \tilde{R} | H | px, c, \tilde{R} \rangle \\
 V(pxa,sc) &= 4 \langle px, a, \tilde{R} | H | s, c, \tilde{R} \rangle \\
-V(s^*a,pxc) &= 4 \langle s^*, a, \tilde{R} | H | px, c, \tilde{R} \rangle \\
-V(pxa,s^*c) &= 4 \langle px, a, \tilde{R} | H | s^*, c, \tilde{R} \rangle \qquad (1.64)
+V(s^{*}a,pxc) &= 4 \langle s^{*}, a, \tilde{R} | H | px, c, \tilde{R} \rangle \\
+V(pxa,s^{*}c) &= 4 \langle px, a, \tilde{R} | H | s^{*}, c, \tilde{R} \rangle \qquad (1.64)
 \end{aligned}
 $$
 
-Here $s$, $p$ and $s^*$ refers to orbitals in the materials. $s^*$ is a virtual orbital that has $s$ symmetry, and that is meant to cover for the effects of the orbitals in the actual materials with energy higher than the energy of the first set of $p$ orbitals. $px$ and $py$ are related to the orientation of the actual $p$ orbital.
+Here $s$, $p$ and $s^{*}$ refers to orbitals in the materials. $s^{*}$ is a virtual orbital that has $s$ symmetry, and that is meant to cover for the effects of the orbitals in the actual materials with energy higher than the energy of the first set of $p$ orbitals. $px$ and $py$ are related to the orientation of the actual $p$ orbital.
 
 The symbols $a$ and $c$ in equation 1.64 refer to whether the actual lattice point we deal with is an anion or a cation in the structure. For example, in InAs, In is the cation material and As is the anion material.
 
 The feature $\tilde{R}$ is of course the position vector in the lattice.
 
-As only nearest neighbours are interacting, the $sp^3s^*$ model then has a Hamiltonian as follows:
+As only nearest neighbours are interacting, the $sp^3s^{*}$ model then has a Hamiltonian as follows:
 
 $$
 H = \sum_{n,b,i} |n, b, \tilde{R}_i \rangle E(n,b) \langle n, b, \tilde{R}_i| + \sum_{n,b,j=i+\frac{a}{4}(1,1,1)} |n, b, \tilde{R}_i \rangle V \langle n, b, \tilde{R}_j| \qquad (1.65)
@@ -776,12 +776,12 @@ $$
 \alpha_{px,c} \\
 \alpha_{py,c} \\
 \alpha_{pz,c} \\
-\alpha_{s^*,c} \\
+\alpha_{s^{*},c} \\
 \alpha_{s,a} \\
 \alpha_{px,a} \\
 \alpha_{py,a} \\
 \alpha_{pz,a} \\
-\alpha_{s^*,a}
+\alpha_{s^{*},a}
 \end{pmatrix}
 $$
 
@@ -1011,12 +1011,12 @@ i+1, c, s \\
 i+1, c, px \\
 i+1, c, py \\
 i+1, c, pz \\
-i+1, c, s^* \\
+i+1, c, s^{*} \\
 i+1, a, s \\
 i+1, a, px \\
 i+1, a, py \\
 i+1, a, pz \\
-i+1, a, s^*
+i+1, a, s^{*}
 \end{pmatrix}
 $$
 

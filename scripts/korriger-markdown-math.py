@@ -16,6 +16,25 @@ def fix_markdown_math(file_path):
     # Trinn 1: Erstatt \tag{x} med \quad (x) for Docusaurus-kompatibilitet
     content = re.sub(r'\s*\\tag\{([^}]+)\}', r' \\quad (\1)', content)
 
+    # Trinn 2: Erstatt naken ^* med ^{*} overalt i all matematikk ($...$  og $$...$$)
+    # Behandler inline-math ($...$) og block-math ($$...$$) separat via en felles regex.
+    # Matcher ^* kun der * IKKE allerede er inni {}, dvs. ikke ^{*} allerede.
+    def fix_caret_star(math_content):
+        # Beskytt allerede innpakkede ^{*} med en placeholder
+        protected = math_content.replace('^{*}', '\x00CARET_STAR\x00')
+        # Erstatt alle gjenværende nakne ^* med ^{*}
+        fixed = protected.replace('^*', '^{*}')
+        # Gjenopprett placeholder
+        return fixed.replace('\x00CARET_STAR\x00', '^{*}')
+
+    # Fiks i inline $...$ (ikke $$) — negativ lookbehind/ahead for å unngå $$
+    content = re.sub(
+        r'(?<!\$)\$(?!\$)(.*?)(?<!\$)\$(?!\$)',
+        lambda m: '$' + fix_caret_star(m.group(1)) + '$',
+        content,
+        flags=re.DOTALL
+    )
+
     # Trinn 2: Splitt enkeltlinje-blokkformler ($$ formel $$) til flerlinje-formler
     # Slik at åpnings- og lukkemarkørene ($$) står på egne linjer for GitHub
     pattern_single_line = r'(?m)^\s*\$\$(.+?)\$\$\s*$'
@@ -48,7 +67,10 @@ def fix_markdown_math(file_path):
             # Pakk inn innholdet i aligned-miljøet
             wrapped = ["\\begin{aligned}"] + lines + ["\\end{aligned}"]
             block_content = "\n".join(wrapped)
-            
+
+        # Pakk inn naken ^* i klammeparenteser (^{*}) for KaTeX/Docusaurus
+        block_content = fix_caret_star(block_content)
+
         # Returner formelen omgitt av doble linjeskift (som blir komprimert senere)
         return f"\n\n$$\n{block_content}\n$$\n\n"
 
