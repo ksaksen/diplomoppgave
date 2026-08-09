@@ -13,24 +13,24 @@ The main purpose of this theory chapter is to show how one can go from the simpl
 ### 1.1 The Schrödinger equation
 
 In this section I will show how the wave function for an electron which is passing through a potential barrier in one dimension can be expressed by the reflection and transmission amplitudes $r(k)$ and $t(k)$. I will also show how the amplitudes $r$ and $t$ are expressed by the wave function on the surface between different semiconductors, or less specifically, how the amplitudes are expressed by means of the boundary conditions of the potential barrier. We start with the time-dependent Schrödinger equation:
-
-$$ H\Psi = i\hbar \frac{\partial}{\partial t}\Psi \tag{1.1} $$
-
+$$
+H\Psi = i\hbar \frac{\partial}{\partial t}\Psi \tag{1.1}
+$$
 Here is
 <!-- SLUTT SIDE 1 -->
 
 
 <!-- START SIDE 2 -->
 and
-
-$$H = -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x), \tag{1.2}$$
-
-$$\Psi = \Phi \exp \left( i \frac{E}{\hbar} t \right). \tag{1.3}$$
-
+$$
+H = -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x), \tag{1.2}
+$$$$
+\Psi = \Phi \exp \left( i \frac{E}{\hbar} t \right). \tag{1.3}
+$$
 The last equation shows how $\Psi$ might be separated into a time-independent part $\Phi$ and an exponential time factor, which is nothing more than a plane wave in the dimension of time. $H$ is the Hamiltonian for the electron in the semiconductor, and $V(x)$ is the potential barrier. Specifically, $V(x)$ might be due to the different band structure of different semiconductors. Using the mentioned separation, we obtain the time-independent Schrödinger equation:
-
-$$H \Phi = E \Phi. \tag{1.4}$$
-
+$$
+H \Phi = E \Phi. \tag{1.4}
+$$
 Here $E$ is the energy eigenvalue for the wave function $\Phi$. In the problem we are considering, we have a situation where a free electron is partly reflected by and partly transmitted through a potential barrier. As the kinetic energy of the incoming electron is assumed to be constant, the only effect of the separation is that the potential $V$ is also treated as constant in time. This situation is illustrated in Figure 1.1, that is, for a general potential barrier.
 
 Figure 1.1: A general potential barrier.
@@ -118,67 +118,70 @@ Here, equation 1.12, the contribution of the hopping matrix elements gives us th
 ### 1.2.1 Physical content of the hopping matrix elements
 
 In this subsection I will use my knowledge about simple homogeneous discrete systems, specifically the Hamiltonian of such systems to try to obtain a feeling of what the physical content of the hopping matrix element is. I start by setting up the time independent Schrödinger equation for the discrete system and then of course with the Hamiltonian given in equation 1.12.
-
-$$ H|\Phi_k\rangle = \left( \sum_m \left( |m\rangle \epsilon_0 \langle m| + |m\rangle u \langle m+1| + |m\rangle u^* \langle m-1| \right) \right) \cdot \left( \sum_j \exp(ikja)|j\rangle \right) = E_k|\Phi_k\rangle \quad (1.13) $$
-
+$$
+H|\Phi_k\rangle = \left( \sum_m \left( |m\rangle \epsilon_0 \langle m| + |m\rangle u \langle m+1| + |m\rangle u^* \langle m-1| \right) \right) \cdot \left( \sum_j \exp(ikja)|j\rangle \right) = E_k|\Phi_k\rangle \quad (1.13)
+$$
 As the system is homogeneous it is here correct to use the energy $\epsilon_0$ overall and to use the Bloch like eigenstates.
 
 Setting $m$ equal to $m_0$ in equation 1.13, that is, looking specifically on atom number $m_0$, or, more precise, atomic layer number $m_0$, we obtain equation 1.14.
-
-$$ E_k \exp(ikm_0 a) = \epsilon_0 \exp(ikm_0 a) + u \exp(ik(m_0+1)a) + u^* \exp(ik(m_0-1)a) \quad (1.14) $$
-
+$$
+E_k \exp(ikm_0 a) = \epsilon_0 \exp(ikm_0 a) + u \exp(ik(m_0+1)a) + u^* \exp(ik(m_0-1)a) \quad (1.14)
+$$
 This because $\langle m | j \rangle = \delta_{mj}$ i.e. equals 1 for $j=m$ and 0 otherwise. Hence,
-
-$$ |m_0\rangle \exp(ikm_0 a)[\epsilon_0 + u \exp(ika) + u^* \exp(-ika)] = |m_0\rangle \exp(ikm_0 a)E_k \quad (1.15) $$
+$$
+|m_0\rangle \exp(ikm_0 a)[\epsilon_0 + u \exp(ika) + u^* \exp(-ika)] = |m_0\rangle \exp(ikm_0 a)E_k \quad (1.15)
+$$
 *and therefore,*
-$$ E_k = \epsilon_0 + u \exp(ika) + u^* \exp(-ika) \quad (1.16) $$
-
+$$
+E_k = \epsilon_0 + u \exp(ika) + u^* \exp(-ika) \quad (1.16)
+$$
 This is the expression for the discrete energy eigenvalues for particles moving between lattice points in a homogeneous lattice (this still means nothing else than keeping $\epsilon_j = \epsilon_0$ for all $j$), through hopping processes. And then through hopping processes that is characterised by the hopping matrix elements $u$. For a homogeneous system the electrons in the conduction bands have continuous $\vec{k}$ and the energy eigenvalues of such particles are also continuous, and take values equal to the square of the momentum divided with the mass twice.
 
 The hopping matrix element $u$, that gives an expression for the hopping probability between $\vec{r}$ and $\vec{r} + \vec{R}$ is given as;
-
-$$ u = \int d\vec{r} \Psi^*(\vec{r}) H \Psi(\vec{r} + \vec{R}) \sim \exp(i\phi) \quad (1.17) $$
+$$
+u = \int d\vec{r} \Psi^*(\vec{r}) H \Psi(\vec{r} + \vec{R}) \sim \exp(i\phi) \quad (1.17)
+$$
 11
 <!-- SLUTT SIDE 5 -->
 
 
 <!-- START SIDE 6 -->
 In the model I will use the position vectors are replaced by discrete eigen states $j$, but the meaning of equation 1.17 should still be clear. For the energy eigenvalues we obtain,
-
-$$ E_k = \epsilon_0 + |u|\exp(i[ka+\phi]) + |u|\exp(-i[ka+\phi]) = \epsilon_0 + 2|u|\cos(ka+\phi). \quad (1.18) $$
-
+$$
+E_k = \epsilon_0 + |u|\exp(i[ka+\phi]) + |u|\exp(-i[ka+\phi]) = \epsilon_0 + 2|u|\cos(ka+\phi). \quad (1.18)
+$$
 The center of the Brillouin zone is located where $E_k$ has its minimum, i.e., we choose $\phi = \pi$. We also choose the value of $\epsilon_0$ so that the energy eigenvalue is zero in the center of the Brillouin zone. With $u$ equal to its own negative absolute value, $u = -|u|$, we get an $\epsilon_0$ with value $-2u$ and the dispersion relation on the form
-
-$$ E(k) = -2u + 2u \cos(ka). \quad (1.19) $$
-
+$$
+E(k) = -2u + 2u \cos(ka). \quad (1.19)
+$$
 This expression can be expanded since
-
-$$ \cos(ka) = 1 - \frac{1}{2}(ka)^2 + ..., $$
-
+$$
+\cos(ka) = 1 - \frac{1}{2}(ka)^2 + ...,
+$$
 and for small values of $k$ we may write
-
-$$ E(k) \approx -uk^2a^2 = |u|a^2k^2. \quad (1.20) $$
-
+$$
+E(k) \approx -uk^2a^2 = |u|a^2k^2. \quad (1.20)
+$$
 Through comparing the expression for the energy in the center of the Brillouin zone and the energy of a free electron we obtain an expression for the effective mass of the electrons close to the Brillouin zone center:
-
-$$ \frac{\hbar^2 k^2}{2m^*} = |u|a^2k^2. $$
-
+$$
+\frac{\hbar^2 k^2}{2m^*} = |u|a^2k^2.
+$$
 This gives meaning to the hopping matrix element $u$; it is inversely proportional to the effective mass and the square of the unit cell constant, and it is also proportional to the square of $\hbar$:
-
-$$ |u| = \frac{\hbar^2}{2m^*a^2}. \quad (1.21) $$
-
+$$
+|u| = \frac{\hbar^2}{2m^*a^2}. \quad (1.21)
+$$
 This is valid for electrons in the valence band with wavelength $\lambda$ so that
-
-$$ ka \ll 1 \Rightarrow \frac{2\pi}{\lambda}a \ll 1. $$
-
+$$
+ka \ll 1 \Rightarrow \frac{2\pi}{\lambda}a \ll 1.
+$$
 The criterion for $\lambda$ then becomes
-
-$$ \lambda \gg a. \quad (1.22) $$
-
+$$
+\lambda \gg a. \quad (1.22)
+$$
 Finally we can conclude that the value of $\epsilon_j$ is
-
-$$ \epsilon_j = \begin{cases} \epsilon_0 = -2u & \text{when } j \le 0 \\ \epsilon_0 + V_j = -2u + V_j & \text{when } 1 \le j \le N \\ \epsilon_0 = -2u & \text{when } j \ge N+1 \end{cases} \quad (1.23) $$
-
+$$
+\epsilon_j = \begin{cases} \epsilon_0 = -2u & \text{when } j \le 0 \\ \epsilon_0 + V_j = -2u + V_j & \text{when } 1 \le j \le N \\ \epsilon_0 = -2u & \text{when } j \ge N+1 \end{cases} \quad (1.23)
+$$
 I will now return to the original problem, the time independent Schrödinger equation $(E - H)|\Phi\rangle = 0$ for a system with a potential barrier, not a homogenous system.
 
 12
@@ -250,134 +253,244 @@ $$
 
 <!-- START SIDE 8 -->
 This gives for the Schrödinger equation :
-$$-\frac{\hbar^2}{2m (\Delta x)^2}(\Phi_{i+1} + \Phi_{i-1} - 2\Phi_i) = E\Phi_i \quad (1.28)$$
+$$
+-\frac{\hbar^2}{2m (\Delta x)^2}(\Phi_{i+1} + \Phi_{i-1} - 2\Phi_i) = E\Phi_i \quad (1.28)
+$$
 In section 1.2 we obtained the Hamiltonian as a sum of hopping matrix elements $u$. Assuming that $u$ is real we get
-$$H = \sum_j [|j\rangle \epsilon_0 \langle j| + |j\rangle u \langle j+1| + |j\rangle u \langle j-1|] \quad (1.29)$$
+$$
+H = \sum_j [|j\rangle \epsilon_0 \langle j| + |j\rangle u \langle j+1| + |j\rangle u \langle j-1|] \quad (1.29)
+$$
 With this Hamiltonian we get the following Schrödinger equation :
 That is
-$$\langle i|H|\Phi\rangle = \langle i|E|\Phi\rangle \equiv E\Phi_i \quad (1.30)$$
-$$= \langle i| \sum_j [|j\rangle \epsilon_0 \langle j| + |j\rangle u \langle j+1| + |j\rangle u \langle j-1|] |\Phi\rangle$$
-$$= \epsilon_0 \Phi_i + u\Phi_{i+1} + u\Phi_{i-1}$$
-$$= E\Phi_i.$$
+$$
+\langle i|H|\Phi\rangle = \langle i|E|\Phi\rangle \equiv E\Phi_i \quad (1.30)
+$$
+$$
+= \langle i| \sum_j [|j\rangle \epsilon_0 \langle j| + |j\rangle u \langle j+1| + |j\rangle u \langle j-1|] |\Phi\rangle
+$$
+$$
+= \epsilon_0 \Phi_i + u\Phi_{i+1} + u\Phi_{i-1}
+$$
+$$
+= E\Phi_i.
+$$
 By comparing with the expression 1.28 obtained from the assumption 1.27 we can see the following:
-$$\frac{\hbar^2}{m(\Delta x)^2} = \epsilon_0 \quad \text{,and}$$
-$$-\frac{\hbar^2}{2m(\Delta x)^2} = u.$$
+$$
+\frac{\hbar^2}{m(\Delta x)^2} = \epsilon_0 \quad \text{,and}
+$$
+$$
+-\frac{\hbar^2}{2m(\Delta x)^2} = u.
+$$
 From this we can conclude that
-$$\epsilon_0 = -2u \quad (1.31)$$
+$$
+\epsilon_0 = -2u \quad (1.31)
+$$
 as assumed earlier.
 We then assume that the wave function can be written as a sum. Which is nothing other than the plane wave and the perturbation mentioned in the previous section. By writing the Schrödinger equation one gets the definition of the Green function in the last section.
 Further we include a potential barrier. We can now write the time independent unperturbed wave function in the area in front of the barrier (where the potential is zero) like this:
-$$|\Phi^o\rangle = \sum_{j \le -1} \exp(ikja) |j\rangle \quad (1.32)$$
+$$
+|\Phi^o\rangle = \sum_{j \le -1} \exp(ikja) |j\rangle \quad (1.32)
+$$
 Here $(ja)$ is the position of the atoms, or atomic layers, and $a$ is the lattice constant. Still assuming that $u$ is real we find that
-$$\begin{aligned} -(E-H)|\Phi^o\rangle &= -E \sum_{j \le -1} \exp(ikja) |j\rangle \\ &+ \sum_i (|i\rangle \epsilon_i \langle i| + |i\rangle u \langle i+1| + |i\rangle u \langle i-1|) \sum_{j \le -1} \exp(ikja) |j\rangle, \end{aligned}$$
+$$
+\begin{aligned} -(E-H)|\Phi^o\rangle &= -E \sum_{j \le -1} \exp(ikja) |j\rangle \\ &+ \sum_i (|i\rangle \epsilon_i \langle i| + |i\rangle u \langle i+1| + |i\rangle u \langle i-1|) \sum_{j \le -1} \exp(ikja) |j\rangle, \end{aligned}
+$$
 <!-- SLUTT SIDE 8 -->
 
 
 <!-- START SIDE 9 -->
 may be written
-$$ -(E - H)|\Phi^\circ \rangle = (-E + \epsilon_0 + u \exp(ika) + u \exp(-ika))\Sigma_{j \le -2} \exp(ikja)|j \rangle $$
-$$ + |-1 \rangle (-E + \epsilon_0 + u \exp(-ika) + \epsilon_0 \exp(-ika) + u \exp(-2ika)) $$
-$$ + |0 \rangle u \exp(ika). $$
-
+$$
+-(E - H)|\Phi^\circ \rangle = (-E + \epsilon_0 + u \exp(ika) + u \exp(-ika))\Sigma_{j \le -2} \exp(ikja)|j \rangle
+$$
+$$
++ |-1 \rangle (-E + \epsilon_0 + u \exp(-ika) + \epsilon_0 \exp(-ika) + u \exp(-2ika))
+$$
+$$
++ |0 \rangle u \exp(ika).
+$$
 Earlier we calculated the dispersion relation
-$$ E(k) = \epsilon_0 + 2u \cos(ka). \quad (1.33) $$
+$$
+E(k) = \epsilon_0 + 2u \cos(ka). \quad (1.33)
+$$
 Putting this in for E, we get a new equality:
-$$ |-1 \rangle u \exp(ika) = -(E-H)|\Phi^\circ \rangle = (E-H)|\Phi' \rangle. \quad (1.34) $$
+$$
+|-1 \rangle u \exp(ika) = -(E-H)|\Phi^\circ \rangle = (E-H)|\Phi' \rangle. \quad (1.34)
+$$
 This leads us to an equation for the perturbed part of the wave function:
-$$ |\Phi_k' \rangle = G(E)(|-1 \rangle u + |0 \rangle u \exp(ika)) \quad (1.35) $$
+$$
+|\Phi_k' \rangle = G(E)(|-1 \rangle u + |0 \rangle u \exp(ika)) \quad (1.35)
+$$
 * `$|\Phi^\circ \rangle$` is the incoming part of the wave function for $j \le -1$, an area where the potential $V$ is zero, so that we got a known solution of the time independent Schrödinger equation.
 * Through the expression `$|\Phi \rangle = |\Phi^\circ \rangle + |\Phi' \rangle$` we now got the unknown `$|\Phi' \rangle$` expressed by the known `$|\Phi^\circ \rangle$`.
 
 We use the notation $G_{ij} = \langle i|G(E)|j \rangle$ for the matrix element $ij$ of the Green function $G(E)$. Then we get
-$$ \langle j|\Phi_k' \rangle = u \exp(ika)G_{j,0} - uG_{j,-1}. \quad (1.36) $$
+$$
+\langle j|\Phi_k' \rangle = u \exp(ika)G_{j,0} - uG_{j,-1}. \quad (1.36)
+$$
 Using the definition of G and H we get two important equations showing the relation between G, $G^\circ$ and $H'$, where $H = H^\circ + H'$, and $H'$ is obtained from treating the structure as if it consisted of two parts. One involves the right hand side of $i+1$ and $i+1$ itself, and one involves the left hand side of $i+1$ so that $H' = |i \rangle u \langle i+1| + |i+1 \rangle u \langle i|$.
-$$ (E-H)G = 1 \quad (E-H^\circ)G^\circ = 1 $$
-$$ \Downarrow $$
-$$ (E-H^\circ - H')G = 1 \quad \text{;using the definition of H.} $$
-$$ \Downarrow $$
-$$ G^\circ\left(\frac{1}{G^\circ}\right)G - H'G = G^\circ \quad \text{;multiplying with } G^\circ \text{ from left.} $$
-$$ \Downarrow $$
-$$ G = G^\circ + GH'G^\circ \quad \text{;using the 2.statement and multiplying with G from left.} $$
+$$
+(E-H)G = 1 \quad (E-H^\circ)G^\circ = 1
+$$
+$$
+\Downarrow
+$$
+$$
+(E-H^\circ - H')G = 1 \quad \text{;using the definition of H.}
+$$
+$$
+\Downarrow
+$$
+$$
+G^\circ\left(\frac{1}{G^\circ}\right)G - H'G = G^\circ \quad \text{;multiplying with } G^\circ \text{ from left.}
+$$
+$$
+\Downarrow
+$$
+$$
+G = G^\circ + GH'G^\circ \quad \text{;using the 2.statement and multiplying with G from left.}
+$$
 <!-- SLUTT SIDE 9 -->
 
 
 <!-- START SIDE 10 -->
 We have then got the two equations mentioned earlier:
-$$ G = G^\circ + G^\circ H'G = G^\circ + GH'G^\circ. \quad (1.37) $$
+$$
+G = G^\circ + G^\circ H'G = G^\circ + GH'G^\circ. \quad (1.37)
+$$
 This is the Dyson equation. The following relation is satisfied: $ \langle m|G^\circ|n \rangle = 0 $ if $ m \leq i $ and $ n \geq i+1 $ or if $ n \leq i $ and $ m \geq i+1 $.
 We then move to the definition of the surface matrix elements of the Green function $G$.
 They are given the names $\Gamma^+$ and $\Gamma^-:$
-$$ G_{i,i}^\circ = \langle i|G^\circ|i \rangle \equiv \Gamma_i^-, $$
-$$ G_{i+1,i+1}^\circ = \langle i+1|G^\circ|i+1 \rangle \equiv \Gamma_{i+1}^+. $$
+$$
+G_{i,i}^\circ = \langle i|G^\circ|i \rangle \equiv \Gamma_i^-,
+$$
+$$
+G_{i+1,i+1}^\circ = \langle i+1|G^\circ|i+1 \rangle \equiv \Gamma_{i+1}^+.
+$$
 With $G = G^\circ + G^\circ H'G$ we get
-$$ G_{i,i} = G_{i,i}^\circ + \langle i|G^\circ H'G|i \rangle \\
+$$
+\begin{aligned}
+G_{i,i} = G_{i,i}^\circ + \langle i|G^\circ H'G|i \rangle \\
 = G_{i,i}^\circ + \langle i|G^\circ|[i \rangle u \langle i+1|G|i \rangle \\
 = G_{i,i}^\circ + \langle i|G^\circ|i \rangle u \langle i+1|G|i \rangle \\
-= G_{i,i}^\circ + G_{i,i}^\circ u G_{i+1,i}. \quad (1.39) $$
+= G_{i,i}^\circ + G_{i,i}^\circ u G_{i+1,i}. \quad (1.39)
+\end{aligned}
+$$
 Similarly as $G_{i+1,i}^\circ$ is zero,
-$$ G_{i+1,i} = G_{i+1,i+1}^\circ u G_{i,i}. \quad (1.40) $$
+$$
+G_{i+1,i} = G_{i+1,i+1}^\circ u G_{i,i}. \quad (1.40)
+$$
 From equations 1.40 and 1.41 we can find the following useful formula connected to the matrix elements of the Green function:
-$$ \frac{1}{G_{i,i}} = \frac{1}{\Gamma_i^-} - u(\Gamma_{i+1}^+)u, $$
+$$
+\frac{1}{G_{i,i}} = \frac{1}{\Gamma_i^-} - u(\Gamma_{i+1}^+)u,
+$$
 Setting in expressions 1.25 and 1.39 we obtain
-$$ \frac{1}{G_{i,i}} = E - \epsilon_i - u(\Gamma_{i-1}^-)u - u(\Gamma_{i+1}^+)u, $$
+$$
+\frac{1}{G_{i,i}} = E - \epsilon_i - u(\Gamma_{i-1}^-)u - u(\Gamma_{i+1}^+)u,
+$$
 and inverting to get
-$$ G_{i,i} = \frac{1}{E - \epsilon_i - u(\Gamma_{i-1}^-)u - u(\Gamma_{i+1}^+)u}. \quad (1.42) $$
+$$
+G_{i,i} = \frac{1}{E - \epsilon_i - u(\Gamma_{i-1}^-)u - u(\Gamma_{i+1}^+)u}. \quad (1.42)
+$$
 From repeated use of equation 1.41 we find an iteration formula for the elements $ i+n, i $ of the Green matrix.
-$$ G_{i+n,i} = (\Gamma_{i+n}^+)u(\Gamma_{i+n-1}^+)u \ldots (\Gamma_{i+1}^+)u G_{i,i}. \quad (1.43) $$
+$$
+G_{i+n,i} = (\Gamma_{i+n}^+)u(\Gamma_{i+n-1}^+)u \ldots (\Gamma_{i+1}^+)u G_{i,i}. \quad (1.43)
+$$
 and for iterating in the opposite direction.
-$$ G_{i+n,i} = G_{i+n,i+n} u(\Gamma_{i+n-1}^-)- \ldots u(\Gamma_i^-). \quad (1.44) $$
+$$
+G_{i+n,i} = G_{i+n,i+n} u(\Gamma_{i+n-1}^-)- \ldots u(\Gamma_i^-). \quad (1.44)
+$$
 16
 <!-- SLUTT SIDE 10 -->
 
 
 <!-- START SIDE 11 -->
 To find the density of states $D(E)$ one can use the surface element of the Green matrix, $G_{i,i}$. $D(E)$ is per definition like
-$$D(E) = - \frac{1}{\pi} \text{Im}[G_{i,i}(E_k)]. \quad (1.45)$$
+$$
+D(E) = - \frac{1}{\pi} \text{Im}[G_{i,i}(E_k)]. \quad (1.45)
+$$
 For a homogeneous one dimensional chain one has
-$$D(E) = \frac{1}{2\pi|u|\sin(ka)}. \quad (1.46)$$
+$$
+D(E) = \frac{1}{2\pi|u|\sin(ka)}. \quad (1.46)
+$$
 From general quantum mechanics one finds the dependence on the energy for the density of states $D(E)$:
-$$D(E) \sim \begin{cases} \frac{1}{\sqrt{E}} & \text{for 1D} \\ \frac{1}{E^0} & \text{for 2D} \\ \sqrt{E} & \text{for 3D}. \end{cases} \quad (1.47)$$
+$$
+D(E) \sim \begin{cases} \frac{1}{\sqrt{E}} & \text{for 1D} \\ \frac{1}{E^0} & \text{for 2D} \\ \sqrt{E} & \text{for 3D}. \end{cases} \quad (1.47)
+$$
 For $ka \ll 1$, $E_k$ is equal to $-2u + 2u \cos(ka)$ which is approximately equal to $|u|k^2a^2$ and $ka$ is equal to the square root of $\sqrt{E_k/|u|}$. This gives us that $D(E_k) \approx |u|ka/2\pi \approx 1/2\pi \sqrt{|u|} \cdot 1/\sqrt{E_k}$. This is equivalent to the general result from quantum mechanics which shows that $D(E)$ is proportional to $1/\sqrt{E_k}$ in the one dimensional case.
 
 ## 1.4 Impurities.
 Impurities in the materials that sets up the lattice changes the energy relations slightly. And therefore also the Green functions. Earlier we have found for a homogeneous system that
-$$G_{i+n,i}(E_k) = \Gamma_{i+n}u\Gamma_{i+n-1}u...\Gamma_i G_{i,i}$$
-$$= (\Gamma u)^n G_{i,i}$$
-$$= E^{inka} G_{i,i}(E_k). \quad (1.48)$$
+$$
+G_{i+n,i}(E_k) = \Gamma_{i+n}u\Gamma_{i+n-1}u...\Gamma_i G_{i,i}
+$$
+$$
+= (\Gamma u)^n G_{i,i}
+$$
+$$
+= E^{inka} G_{i,i}(E_k). \quad (1.48)
+$$
 as the hopping matrix elements and the surface Green functions are identical for all monolayers in a homogeneous lattice. For a system with an impurity $\Delta$ in the position $l$ we got
-$$\frac{1}{G_{ii}(z)} = [z-\epsilon_i - u(\Gamma_{i-1}^-)u - u(\Gamma_{i+1}^+)u]$$
-$$= [z-\epsilon_0-\Delta - 2u^2[\frac{1}{z-\epsilon_0} - \frac{1}{2u^2}\sqrt{(z-\epsilon_0)^2-4u^2}]]$$
-$$= [-\Delta + \sqrt{(z-\epsilon_0)^2-4u^2}]. \quad (1.49)$$
+$$
+\frac{1}{G_{ii}(z)} = [z-\epsilon_i - u(\Gamma_{i-1}^-)u - u(\Gamma_{i+1}^+)u]
+$$
+$$
+= [z-\epsilon_0-\Delta - 2u^2[\frac{1}{z-\epsilon_0} - \frac{1}{2u^2}\sqrt{(z-\epsilon_0)^2-4u^2}]]
+$$
+$$
+= [-\Delta + \sqrt{(z-\epsilon_0)^2-4u^2}]. \quad (1.49)
+$$
 So $G_{i,i}$ has pole for $-\Delta + \sqrt{(z-\epsilon_0)^2 - 4u^2} = 0$ which implies that $z = \epsilon_0 \pm \sqrt{\Delta^2 + 4u^2}.$
 
 ## 1.5 Transmission and reflection coefficients
 Taking into account 1.35, which says that
-$$\vert \Phi_k' \rangle = G(E)[\vert -1 \rangle u + \vert 0 \rangle u \exp(-ika)]$$
+$$
+\vert \Phi_k' \rangle = G(E)[\vert -1 \rangle u + \vert 0 \rangle u \exp(-ika)]
+$$
 17
 <!-- SLUTT SIDE 11 -->
 
 
 <!-- START SIDE 12 -->
 and as the $i$-th element of the state vector $|\Phi'_k\rangle$ is obtained by multiplying it by $\langle i|$ as follows:
-$$\Phi'_i \equiv \langle i|\Phi'_k\rangle = -G_{i,-1}(E)u + G_{i,0}(E)u \exp(ika),$$
+$$
+\Phi'_i \equiv \langle i|\Phi'_k\rangle = -G_{i,-1}(E)u + G_{i,0}(E)u \exp(ika),
+$$
 where
-$$G_{i,-1}(E) = G^\circ_{i,-1}(E) + G_{i,0}u_{0,-1}G^\circ_{-1,-1} = G_{i,0}u\Gamma^-,$$
+$$
+G_{i,-1}(E) = G^\circ_{i,-1}(E) + G_{i,0}u_{0,-1}G^\circ_{-1,-1} = G_{i,0}u\Gamma^-,
+$$
 gives that
-$$\Phi'_i = -G_{i,0}u\Gamma^- u + G_{i,0}u \exp(ika) = -2iu \sin(ka)G_{i,0} \quad (1.50)$$
+$$
+\Phi'_i = -G_{i,0}u\Gamma^- u + G_{i,0}u \exp(ika) = -2iu \sin(ka)G_{i,0} \quad (1.50)
+$$
 for $i \geq 0$. It is understood that $G_{i,0} = G^\circ_{i,0}(E)$ and that all other elements of $G$ are functions of $E$, even though it is not written everywhere. The lattice points are numbered as in figure 2 with 0 as the last atomic layer before the potential barrier and $N$ as the last atomic layer before the end of the potential barrier. Since
-$$\Phi(N+1) = t(k) \exp(ika(N+1)), \quad (1.51)$$
+$$
+\Phi(N+1) = t(k) \exp(ika(N+1)), \quad (1.51)
+$$
 we find the result for $t(k)$:
-$$t(k) = -2iu \sin(ka) \exp(-ika(N+1))G_{N+1,0}^\circ. \quad (1.52)$$
+$$
+t(k) = -2iu \sin(ka) \exp(-ika(N+1))G_{N+1,0}^\circ. \quad (1.52)
+$$
 Through the same procedure we get from the knowledge of lattice point number $-1$ the expression for the reflection coefficient
-$$r(k) = -G_{-1,-1}u \exp(-ika) = G_{-1,0}u \exp(-2ika). \quad (1.53)$$
+$$
+r(k) = -G_{-1,-1}u \exp(-ika) = G_{-1,0}u \exp(-2ika). \quad (1.53)
+$$
 We have then expressed the reflection and transmission coefficients by means of the Green function; as we wanted. As we first are dealing with observables we might for example look at the current density $j(x)$:
-$$j(x) = \frac{e\hbar}{2im} \left( \Phi^*(x) \frac{\partial\Phi(x)}{\partial x} - \frac{\partial\Phi(x)^*}{\partial x} \Phi(x) \right). \quad (1.54)$$
+$$
+j(x) = \frac{e\hbar}{2im} \left( \Phi^*(x) \frac{\partial\Phi(x)}{\partial x} - \frac{\partial\Phi(x)^*}{\partial x} \Phi(x) \right). \quad (1.54)
+$$
 The operator which belongs to $j(x)$ is identical to the velocity operator.
-$$\hat{j} = -e\hat{v} = -\frac{ei}{\hbar}[\hat{v}, H] \\ = -\frac{ei}{\hbar}\sum_{j}|j\rangle ja \langle j| \sum_m \left( |m\rangle \epsilon_0 \langle m| + |m\rangle u \langle m \pm 1| \right). \quad (1.55)$$
+$$
+\begin{aligned}
+\hat{j} = -e\hat{v} = -\frac{ei}{\hbar}[\hat{v}, H] \\ = -\frac{ei}{\hbar}\sum_{j}|j\rangle ja \langle j| \sum_m \left( |m\rangle \epsilon_0 \langle m| + |m\rangle u \langle m \pm 1| \right). \quad (1.55)
+\end{aligned}
+$$
 This because
 and
-$$i\hbar \frac{\partial A}{\partial t} = [A, H],$$
-
+$$
+i\hbar \frac{\partial A}{\partial t} = [A, H],
+$$
 18
 <!-- SLUTT SIDE 12 -->
 
@@ -386,13 +499,21 @@ $$i\hbar \frac{\partial A}{\partial t} = [A, H],$$
 $\hat{x} = \sum_j \vert j \rangle ja \langle j \vert$.
 
 Further we have that hopping matrix elements $u$ give the only contributions to the current. Through further calculations we get that
-$$ \hat{j} = \frac{ei}{\hbar} \sum_j (\vert j \rangle ja \langle j+1 \vert - \vert j \rangle ja \langle j-1 \vert ) \quad (1.56) $$
+$$
+\hat{j} = \frac{ei}{\hbar} \sum_j (\vert j \rangle ja \langle j+1 \vert - \vert j \rangle ja \langle j-1 \vert ) \quad (1.56)
+$$
 That is; the current operator has matrix elements as follows:
-$$ \hat{j}_{i,i+1} = \frac{ei}{\hbar}ua(\vert i \rangle \langle i+1 \vert - \vert i+1 \rangle \langle i \vert) \quad (1.57) $$
+$$
+\hat{j}_{i,i+1} = \frac{ei}{\hbar}ua(\vert i \rangle \langle i+1 \vert - \vert i+1 \rangle \langle i \vert) \quad (1.57)
+$$
 Through multiplication with the state vector $\vert \Phi \rangle$ and its adjoint $\langle \Phi \vert$ we get the current density expectation value:
-$$ j_{i,i+1} = \frac{eiua^2}{\hbar} \left(\Phi_i^* \frac{\partial \Phi_i}{\partial x} - \frac{\partial \Phi_i^*}{\partial x} \Phi_i \right) \quad (1.58) $$
+$$
+j_{i,i+1} = \frac{eiua^2}{\hbar} \left(\Phi_i^* \frac{\partial \Phi_i}{\partial x} - \frac{\partial \Phi_i^*}{\partial x} \Phi_i \right) \quad (1.58)
+$$
 by use of the assumption that $\partial \Phi_i/\partial x \approx \Phi_{i+1} - \Phi_i / a$. Further we use the dispersion relation $E_k = -2u + 2u \cos(ka) \approx -uk^2a^2$ as $ka \ll 1$, then from the definition $E_k = \hbar^2 k^2 / 2m$ we get an expression for $u$; $u \approx -\hbar^2/2ma^2$. This yields
-$$ \tilde{j}_{i,i+1} = -\frac{i\hbar}{2m} \left(\Phi_i^* \frac{\partial \Phi_i}{\partial x} - \frac{\partial \Phi_i^*}{\partial x} \Phi_i \right), \quad (1.59) $$
+$$
+\tilde{j}_{i,i+1} = -\frac{i\hbar}{2m} \left(\Phi_i^* \frac{\partial \Phi_i}{\partial x} - \frac{\partial \Phi_i^*}{\partial x} \Phi_i \right), \quad (1.59)
+$$
 in agreement with the continuum expression 1.54.
 
 ## 1.6 1D$\rightarrow$3D, single band$\rightarrow$multiple band.
@@ -407,9 +528,15 @@ We have various types of semiconductors:
 *   “IV” semiconductors (C), Si, Ge, Sn...
 
 All these semiconductors have the zincblende structure. The primitive lattice vectors for this sort of structure:
-$$ \vec{A}1 = \frac{a}{2}(1,1,0) $$
-$$ \vec{A}2 = \frac{a}{2}(1,0,1) $$
-$$ \vec{A}3 = \frac{a}{2}(0,1,1) \quad (1.60) $$
+$$
+\vec{A}1 = \frac{a}{2}(1,1,0)
+$$
+$$
+\vec{A}2 = \frac{a}{2}(1,0,1)
+$$
+$$
+\vec{A}3 = \frac{a}{2}(0,1,1) \quad (1.60)
+$$
 19
 <!-- SLUTT SIDE 13 -->
 
@@ -562,90 +689,137 @@ $$
 
 <!-- START SIDE 17 -->
 The contribution due to the potential barrier $|\phi\\rangle$ is given by means of the Green function, the energy, the Hamiltonian and the unperturbed state vector $|S_\alpha\\rangle.$
-
-$$|\phi\\rangle = G^R[-(E-H)|S_\alpha\\rangle]. \quad (1.69)$$
-
+$$
+\begin{aligned}
+|\phi\\rangle = G^R[-(E-H)|S_\alpha\\rangle]. \quad (1.69)
+\end{aligned}
+$$
 If the barrier is in the 0-th lattice point, then the perturbed contribution can be written
-$$|\phi\\rangle = G^R[U_{a,c}|0, c, \alpha \\rangle - U_{c,\alpha}|0, a, \alpha \\rangle] \\ = \frac{4\pi i}{a} G^R \hat{v}|0, \alpha \\rangle. \quad (1.70)$$
-
+$$
+\begin{aligned}
+|\phi\\rangle = G^R[U_{a,c}|0, c, \alpha \\rangle - U_{c,\alpha}|0, a, \alpha \\rangle] \\ = \frac{4\pi i}{a} G^R \hat{v}|0, \alpha \\rangle. \quad (1.70)
+\end{aligned}
+$$
 Have I mentioned that I have changed the name of the hopping matrix? The name is now depending on from what kind of atomic layer the electron is hopping from and it is also depending on what kind of atomic layer the electron is hopping to. The names I will use are as follows: For hopping between different monolayers I use $V_{c,\alpha}$ for hopping from an anion layer and $V_{a,c}$ for hopping from a cation layer. For hopping between atomic layers at one and the same lattice point, or monolayer, I use $U_{a,c}$ for hopping from an anion and $U_{c,\alpha}$ for hopping to a cation. As my model is a nearest neighbour model it should be obvious to what layer the electron is hopping in every case. In equation 1.70 the velocity operator is equal to;
-$$\hat{v} = \frac{a}{4\hbar} \begin{bmatrix} 0 & iU_{c,\alpha} \\ -iU_{a,c} & 0 \end{bmatrix}. \quad (1.71)$$
-
+$$
+\hat{v} = \frac{a}{4\hbar} \begin{bmatrix} 0 & iU_{c,\alpha} \\ -iU_{a,c} & 0 \end{bmatrix}. \quad (1.71)
+$$
 The state vector $|0, \alpha \\rangle$ is a vector consisting of two elements; one for the anion layer and one for the cation layer:
-$$|0, \alpha \\rangle = \begin{pmatrix} |0, c, \alpha \\rangle \\ |0, a, \alpha \\rangle \end{pmatrix}.$$
-
+$$
+|0, \alpha \\rangle = \begin{pmatrix} |0, c, \alpha \\rangle \\ |0, a, \alpha \\rangle \end{pmatrix}.
+$$
 From earlier we know that
-$$\hat{v} = -\frac{i}{\hbar}[\hat{x}, H]. \quad (1.72)$$
-
+$$
+\hat{v} = -\frac{i}{\hbar}[\hat{x}, H]. \quad (1.72)
+$$
 The position operator is given from
-$$\hat{x} = \sum_j (|j,c\\rangle \frac{ja}{2} \\langle j,c| + |j,a\\rangle [\frac{ja}{2} + \frac{a}{4}] \\langle j,a|). \quad (1.73)$$
-
+$$
+\begin{aligned}
+\hat{x} = \sum_j (|j,c\\rangle \frac{ja}{2} \\langle j,c| + |j,a\\rangle [\frac{ja}{2} + \frac{a}{4}] \\langle j,a|). \quad (1.73)
+\end{aligned}
+$$
 and it has the property
-$$\\langle i, c|\hat{x}|j, c \\rangle = \frac{ja}{2}\delta_{ij}. \quad (1.74)$$
-
+$$
+\begin{aligned}
+\\langle i, c|\hat{x}|j, c \\rangle = \frac{ja}{2}\delta_{ij}. \quad (1.74)
+\end{aligned}
+$$
 and so on.
 
 Next let us discuss scattering amplitudes. We start by writing the state vector $|\Psi \\rangle$ in terms of the features found above:
-$$|\Psi \\rangle = \sum_{j \le 0} [\exp (ik_\alpha \frac{j a}{2}) |j, \alpha \\rangle + \sum_\beta \sqrt{\frac{v_\alpha}{v_\beta}} r_{\alpha\beta} \exp (-ik_\beta \frac{j a}{2}) |j, \beta \\rangle] \\ + \sum_{1 \le j \le N} \sum_k X_{\alpha jk} |j, k \\rangle \\ + \sum_{j \ge N+1} \sum_\beta \sqrt{\frac{v_\alpha}{v_\beta}} t_{\alpha\beta} \exp (ik_\beta \frac{j a}{2}) |j, \beta \\rangle. \quad (1.75)$$
-
+$$
+\begin{aligned}
+|\Psi \\rangle = \sum_{j \le 0} [\exp (ik_\alpha \frac{j a}{2}) |j, \alpha \\rangle + \sum_\beta \sqrt{\frac{v_\alpha}{v_\beta}} r_{\alpha\beta} \exp (-ik_\beta \frac{j a}{2}) |j, \beta \\rangle] \\ + \sum_{1 \le j \le N} \sum_k X_{\alpha jk} |j, k \\rangle \\ + \sum_{j \ge N+1} \sum_\beta \sqrt{\frac{v_\alpha}{v_\beta}} t_{\alpha\beta} \exp (ik_\beta \frac{j a}{2}) |j, \beta \\rangle. \quad (1.75)
+\end{aligned}
+$$
 23
 <!-- SLUTT SIDE 17 -->
 
 
 <!-- START SIDE 18 -->
 As the incoming current density must be equal to the outgoing current density one can write
-$$|v_{\text{in}}||\Psi_{\text{in}}|^2 = \sum_{\text{ut}} |v_{\text{out}}||\Psi_{\text{out}}|^2$$
+$$
+|v_{\text{in}}||\Psi_{\text{in}}|^2 = \sum_{\text{ut}} |v_{\text{out}}||\Psi_{\text{out}}|^2
+$$
 This leads to an equation for $v_\alpha$:
-$$v_\alpha = \sum_{\beta} [|v_\beta|v_\beta|r_{\alpha\beta}|^2 + |v_\beta|v_\beta|t_{\alpha\beta}|^2]$$
-$$= v_\alpha \sum_{\beta} [|r_{\alpha\beta}|^2 + |t_{\alpha\beta}|^2]$$
+$$
+v_\alpha = \sum_{\beta} [|v_\beta|v_\beta|r_{\alpha\beta}|^2 + |v_\beta|v_\beta|t_{\alpha\beta}|^2]
+$$
+$$
+= v_\alpha \sum_{\beta} [|r_{\alpha\beta}|^2 + |t_{\alpha\beta}|^2]
+$$
 We now have two different ways to express the scattering; one where the wave function is written as a sum over the three different areas in the structure, 1.75, and one where the scattered contributions are represented as a perturbation to the incoming wave, 1.66. Through multiplying 1.75 from left with the feature $\{N+1, \beta|$, (whose properties will be explained later,) we obtain the following expression for the transmission coefficient:
-$$t_{\alpha\beta} = \sqrt{\frac{v_\beta}{v_\alpha}} \exp\left(-ik_\beta(N+1)\frac{a}{2}\right) \frac{4i\hbar}{a} \langle N+1, \beta|G^R\hat{v}|0, \alpha \rangle$$
+$$
+t_{\alpha\beta} = \sqrt{\frac{v_\beta}{v_\alpha}} \exp\left(-ik_\beta(N+1)\frac{a}{2}\right) \frac{4i\hbar}{a} \langle N+1, \beta|G^R\hat{v}|0, \alpha \rangle
+$$
 The feature $\{N+1, \beta|$ is a row vector like $\langle N+1, \beta|$ with slightly different properties. That is, $\{N+1, \beta|\Psi \rangle \neq \langle N+1, \beta|\Psi \rangle$, but $\{j, \beta|$ is orthonormal to $|i, \alpha \rangle$. We further get for the reflection coefficient, by multiplying 1.75 with $\{0, \beta|$ from the left;
-$$r_{\alpha\beta} = \sqrt{\frac{v_\beta}{v_\alpha}} \frac{4i\hbar}{a} \langle 0, \beta|G^R\hat{v}|0, \alpha \rangle - \delta_{\alpha\beta} \langle 0, \alpha|\hat{v}|0, \alpha \rangle$$
+$$
+r_{\alpha\beta} = \sqrt{\frac{v_\beta}{v_\alpha}} \frac{4i\hbar}{a} \langle 0, \beta|G^R\hat{v}|0, \alpha \rangle - \delta_{\alpha\beta} \langle 0, \alpha|\hat{v}|0, \alpha \rangle
+$$
 To specify the properties of the feature $\{N+1, \beta|$ and to avoid confusion about which bases are orthogonal to each other I summarize the properties of the three different bases that are involved in a set of equations:
-$$\langle j, \alpha|j, \beta \rangle \neq \delta_{\alpha\beta}$$
-$$|\Psi_\beta \rangle = \sum_{-\infty \leq j \leq \infty} \exp\left(ik_\beta j\frac{a}{2}\right) |j, \beta \rangle$$
-$$\langle \Psi_\alpha | \Psi_\beta \rangle = \delta[\alpha - \beta]$$
-$$\{j, \alpha|j, \beta \rangle = \delta_{\alpha\beta}$$
+$$
+\langle j, \alpha|j, \beta \rangle \neq \delta_{\alpha\beta}
+$$
+$$
+|\Psi_\beta \rangle = \sum_{-\infty \leq j \leq \infty} \exp\left(ik_\beta j\frac{a}{2}\right) |j, \beta \rangle
+$$
+$$
+\langle \Psi_\alpha | \Psi_\beta \rangle = \delta[\alpha - \beta]
+$$
+$$
+\{j, \alpha|j, \beta \rangle = \delta_{\alpha\beta}
+$$
 If we think of a $10 \times 10$ matrix $B$, then the column vectors can be thought of as the ket $|j, \beta \rangle$. Then the inverted matrix $B^{-1}$ is a matrix with row vectors $\{j, \beta|$, so that; $\{\beta|\alpha \rangle = \delta_{\beta\alpha}$. We conclude:
-$$\sum_\beta |\beta \rangle \{\beta| = \sum_\beta |\beta \rangle \langle \beta| = 1$$
-
+$$
+\sum_\beta |\beta \rangle \{\beta| = \sum_\beta |\beta \rangle \langle \beta| = 1
+$$
 and
 <!-- SLUTT SIDE 18 -->
 
 
 <!-- START SIDE 19 -->
-$$\hat{v}|\alpha\rangle = \sum_\beta |\beta\rangle \langle\beta|\hat{v}|\alpha\rangle = v_\alpha|\alpha\rangle \tag{1.85}$$
+$$
+\hat{v}|\alpha\rangle = \sum_\beta |\beta\rangle \langle\beta|\hat{v}|\alpha\rangle = v_\alpha|\alpha\rangle \tag{1.85}
+$$
 since $\langle\beta|\hat{v}|\alpha\rangle$ is equal to $v_\alpha\delta_{\alpha\beta}$.
 
 ## 1.8 Complex band structure.
 For a given $E$ and $k$-parallel, we want to find the solution of the time independent Schrödinger equation $(E - H)|\alpha\rangle = 0$ and find $k_\alpha$ and $|\alpha\rangle$ for $\alpha$ between 1 and 10, that is find the complex band structure. We define the operator $Y$ as follows:
-
-$$\Psi_{i+1} = Y\Psi_i \tag{1.86}$$
-
+$$
+\Psi_{i+1} = Y\Psi_i \tag{1.86}
+$$
 Here
-$$\langle i+1|\Psi \rangle \equiv \Psi_{i+1} \\ = \sum_\alpha \langle i+1|\alpha \rangle \langle\alpha|\Psi \rangle \\ = Y \sum_\alpha \langle i|\alpha \rangle \langle\alpha|\Psi \rangle \\ = Y\Psi_i. \tag{1.87}$$
-
+$$
+\begin{aligned}
+\langle i+1|\Psi \rangle \equiv \Psi_{i+1} \\ = \sum_\alpha \langle i+1|\alpha \rangle \langle\alpha|\Psi \rangle \\ = Y \sum_\alpha \langle i|\alpha \rangle \langle\alpha|\Psi \rangle \\ = Y\Psi_i. \tag{1.87}
+\end{aligned}
+$$
 This leads to
-$$\sum_\alpha \alpha_{i+1} \Psi_\alpha = \sum_\alpha Y \alpha_i \Psi_\alpha \tag{1.88}$$
-
+$$
+\sum_\alpha \alpha_{i+1} \Psi_\alpha = \sum_\alpha Y \alpha_i \Psi_\alpha \tag{1.88}
+$$
 It is then easy to see that
-$$\alpha_{i+1} = Y\alpha_i \tag{1.89}$$
-
+$$
+\alpha_{i+1} = Y\alpha_i \tag{1.89}
+$$
 Since $\alpha$ is a Bloch wave we can write
-$$\alpha_{i+1} = \exp\left(ik_\alpha \frac{a}{2}\right)\alpha_i \tag{1.90}$$
-
+$$
+\alpha_{i+1} = \exp\left(ik_\alpha \frac{a}{2}\right)\alpha_i \tag{1.90}
+$$
 and this shows that the operator $Y$ can be associated with $\exp\left(ik_\alpha \frac{a}{2}\right)$, and we can write
-$$Y\alpha_i = \exp\left(ik_\alpha \frac{a}{2}\right)\alpha_i \tag{1.91}$$
-
+$$
+Y\alpha_i = \exp\left(ik_\alpha \frac{a}{2}\right)\alpha_i \tag{1.91}
+$$
 Repeating:
-
-$$\Psi_{i+1} = Y\Psi_i$$
+$$
+\Psi_{i+1} = Y\Psi_i
+$$
 <!-- SLUTT SIDE 19 -->
 
 
 <!-- START SIDE 20 -->
-$$\Psi_{i+1} = \begin{pmatrix}
+$$
+\Psi_{i+1} = \begin{pmatrix}
 i+1, c, s \\
 i+1, c, px \\
 i+1, c, py \\
@@ -656,18 +830,22 @@ i+1, a, px \\
 i+1, a, py \\
 i+1, a, pz \\
 i+1, a, s^*
-\end{pmatrix}$$
+\end{pmatrix}
+$$
 
 We write the state vector above as
 
-$$\Psi_{i-1} = \begin{pmatrix}
+$$
+\Psi_{i-1} = \begin{pmatrix}
 i+1, c \\
 i+1, a
-\end{pmatrix},$$
+\end{pmatrix},
+$$
 
 where the first component represents the five components dealing with the cation layers and the last component represents the five components dealing with anion layers. We can then express the operator $Y$ by means of two components $T1$ and $T2$:
 
-$$\begin{pmatrix}
+$$
+\begin{pmatrix}
 i+1, c \\
 i+1, a
 \end{pmatrix} = T_2 \begin{pmatrix}
@@ -679,37 +857,49 @@ i, a
 \end{pmatrix} = Y \begin{pmatrix}
 i, c \\
 i, a
-\end{pmatrix}. \quad (1.92)$$
+\end{pmatrix}. \quad (1.92)
+$$
 
 Next we look at the Schrödinger equation. We know that $E\vert i, a \rangle$ might be written
-
-$$E\vert i, a \rangle = E_a \vert i, a \rangle + U_{a,c} \vert i, c \rangle + V_{a,c} \vert i+1, c \rangle. \quad (1.93)$$
-
+$$
+E\vert i, a \rangle = E_a \vert i, a \rangle + U_{a,c} \vert i, c \rangle + V_{a,c} \vert i+1, c \rangle. \quad (1.93)
+$$
 We can then write the time independent Schrödinger equation as
-
-$$E\vert \Psi \rangle = H\vert \Psi \rangle$$
-$$= [\vert i, a \rangle E_a \langle i, a \vert + \vert i, a \rangle U_{a,c} \langle i, c \vert + \vert i, a \rangle V_{a,c} \langle i+1, c \vert + ..]\vert \Psi \rangle. \quad (1.94)$$
-
-$$\langle i, a \vert E \vert \Psi \rangle = \langle i, a \vert \left[ \quad \right] \vert \Psi \rangle$$
-$$= \langle i, a \vert \left[ \quad \right] \sum_{j,b'} \vert j, b' \rangle$$
-$$= \delta_{i,j} \delta_{b,b'}. \quad (1.95)$$
-
+$$
+E\vert \Psi \rangle = H\vert \Psi \rangle
+$$
+$$
+= [\vert i, a \rangle E_a \langle i, a \vert + \vert i, a \rangle U_{a,c} \langle i, c \vert + \vert i, a \rangle V_{a,c} \langle i+1, c \vert + ..]\vert \Psi \rangle. \quad (1.94)
+$$$$
+\langle i, a \vert E \vert \Psi \rangle = \langle i, a \vert \left[ \quad \right] \vert \Psi \rangle
+$$
+$$
+= \langle i, a \vert \left[ \quad \right] \sum_{j,b'} \vert j, b' \rangle
+$$
+$$
+= \delta_{i,j} \delta_{b,b'}. \quad (1.95)
+$$
 where $[\quad]$ contains the same as in 1.94 and $b$ or $b'$ takes the value $c$ for cation and $a$ for anion.
 Since
-
-$$E\vert i, a \rangle = E_a \vert i, a \rangle + U_{a,c} \vert i, c \rangle + V_{a,c} \vert i+1, c \rangle \quad \text{and}$$
-$$E\vert i+1, c \rangle = E_c \vert i+1, c \rangle + U_{c,a} \vert i+1, a \rangle + V_{c,a} \vert i, a \rangle$$
-
+$$
+E\vert i, a \rangle = E_a \vert i, a \rangle + U_{a,c} \vert i, c \rangle + V_{a,c} \vert i+1, c \rangle \quad \text{and}
+$$
+$$
+E\vert i+1, c \rangle = E_c \vert i+1, c \rangle + U_{c,a} \vert i+1, a \rangle + V_{c,a} \vert i, a \rangle
+$$
 26
 <!-- SLUTT SIDE 20 -->
 
 
 <!-- START SIDE 21 -->
 then
-$$|i+1, c\rangle = -V_{a,c}^{-1}U_{a,c}|i, c\rangle + V_{a,c}^{-1}(E-Ea)|i, a\rangle$$
+$$
+|i+1, c\rangle = -V_{a,c}^{-1}U_{a,c}|i, c\rangle + V_{a,c}^{-1}(E-Ea)|i, a\rangle
+$$
 and
-$$|i+1, a\rangle = -U_{c,\alpha}^{-1}V_{c,\alpha}|i, a\rangle + U_{c,\alpha}^{-1}(E-Ec)|i+1, c\rangle$$
-
+$$
+|i+1, a\rangle = -U_{c,\alpha}^{-1}V_{c,\alpha}|i, a\rangle + U_{c,\alpha}^{-1}(E-Ec)|i+1, c\rangle
+$$
 which gives
 $$
 \begin{pmatrix} |i+1, c\rangle \\ |i, a\rangle \end{pmatrix} = \begin{bmatrix} 0 & 1 \\ A & B \end{bmatrix} \begin{pmatrix} |i, c\rangle \\ |i, a\rangle \end{pmatrix} = T1 \begin{pmatrix} |i, c\rangle \\ |i, a\rangle \end{pmatrix} \quad (1.96)
@@ -763,21 +953,25 @@ We have four different sorts of $k_{\alpha}$:
 1.9 Surface Green functions.
 
 In our system with a general potential barrier which is illustrated in figure 2 with discrete coordinates, we may write the wave function as 1.66. It is then possible to write the perturbation $\phi$ of the wavefunction due to the potential barrier as follows, see also equation 1.69:
-
-$$ \vert \phi \rangle = G^{\text{R}}[-(E-H)\vert S_{\alpha} \rangle] = G^{\text{R}} \vert i_0 \rangle \qquad (1.103) $$
-
+$$
+\vert \phi \rangle = G^{\text{R}}[-(E-H)\vert S_{\alpha} \rangle] = G^{\text{R}} \vert i_0 \rangle \qquad (1.103)
+$$
 here $G^{\text{R}}$ is the Green function for the homogenous unperturbed right contact. It doesn't really matter whether it is the right or left contact, as long as it is homogenous. When this is multiplied with $\langle i + 2 \vert$ and $\langle i + 1 \vert$ from left we obtain the two equations written below:
 
 $$
+\begin{aligned}
 \langle i + 2 \vert \phi \rangle = \langle i + 2 \vert G^{\text{R}} \vert i_0 \rangle = \langle i + 2 \vert [G^0 + G^0VG^{\text{R}}] \vert i_0 \rangle \\
 \langle i + 1 \vert \phi \rangle = \langle i + 1 \vert G^{\text{R}} \vert i_0 \rangle \qquad (1.104)
+\end{aligned}
 $$
 
 Through further calculations we obtain for $\langle i + 2 \vert \phi \rangle$:
 
 $$
+\begin{aligned}
 \langle i + 2 \vert \phi \rangle = \langle i + 2 \vert G^0 \vert i + 2 \rangle V_{i+2,i+1} \langle i + 1 \vert G^{\text{R}} \vert i_0 \rangle \\
 = \Gamma_{i+2} + V_{i+2,i+1} \langle i + 1 \vert \phi \rangle \qquad (1.105)
+\end{aligned}
 $$
 
 This gives that
@@ -801,8 +995,10 @@ $$
 Follows from 1.106. Thus
 
 $$
+\begin{aligned}
 \Gamma_a^+ = A_a^+ \frac{1}{A_c} \frac{1}{U_{c,a}} \\
 \Gamma_c^+ = \frac{1}{E-E_c-U_{c,a}(\Gamma_a^+)U_{a,c}} \qquad (1.108)
+\end{aligned}
 $$
 
 Analogously,
@@ -812,8 +1008,10 @@ A_c^- = (\Gamma_c^-) U_{c,a} A_a^- \qquad (1.109)
 $$
 
 $$
+\begin{aligned}
 \Gamma_c^- = A_c^- \frac{1}{A_a^-} \frac{1}{U_{c,a}} \\
 \Gamma_a^+ = \frac{1}{E-E_a-U_{a,c}(\Gamma_c^-)U_{c,a}} \qquad (1.110)
+\end{aligned}
 $$
 
 28
