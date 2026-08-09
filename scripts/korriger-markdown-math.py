@@ -10,6 +10,9 @@ def fix_markdown_math(file_path):
     with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
+    # Normaliser linjeskift til standard unix \n for pålitelig regex-matching
+    content = content.replace("\r\n", "\n")
+
     # Trinn 1: Splitt enkeltlinje-blokkformler ($$ formel $$) til flerlinje-formler
     # Slik at åpnings- og lukkemarkørene ($$) står på egne linjer for GitHub
     pattern_single_line = r'(?m)^\s*\$\$(.+?)\$\$\s*$'
@@ -20,12 +23,12 @@ def fix_markdown_math(file_path):
         
     content_fixed_lines = re.sub(pattern_single_line, split_single_line, content)
 
-    # Trinn 2: Finn alle $$ ... $$ blokker og pakk dem inn i \begin{aligned} ... \end{aligned}
-    # dersom de inneholder linjeskift (\\) og ikke allerede har et flerlinje-miljø.
+    # Trinn 2: Finn alle $$ ... $$ blokker, pakk dem inn i aligned-miljøet om nødvendig,
+    # og sørg for at de er polstret med tomme linjer før og etter seg.
     pattern_block = r'(?s)\$\$(.*?)\$\$'
     
     def process_block(match):
-        block_content = match.group(1)
+        block_content = match.group(1).strip()
         
         # Sjekk om det er et linjeskift (\\) i formelen
         has_line_break = '\\\\' in block_content
@@ -38,21 +41,28 @@ def fix_markdown_math(file_path):
         has_env = any(f'\\begin{{{env}}}' in block_content for env in environments)
         
         if has_line_break and not has_env:
-            lines = block_content.strip().split('\n')
+            lines = block_content.split('\n')
             # Pakk inn innholdet i aligned-miljøet
             wrapped = ["\\begin{aligned}"] + lines + ["\\end{aligned}"]
-            return f"$$\n" + "\n".join(wrapped) + "\n$$"
-        else:
-            # Returner uforandret (men med normaliserte linjeskift rundt $$)
-            return f"$$\n{block_content.strip()}\n$$"
+            block_content = "\n".join(wrapped)
+            
+        # Returner formelen omgitt av doble linjeskift (som blir komprimert senere)
+        return f"\n\n$$\n{block_content}\n$$\n\n"
 
     final_content = re.sub(pattern_block, process_block, content_fixed_lines)
+
+    # Trinn 3: Komprimer alle sekvenser av 3 eller flere påfølgende linjeskift 
+    # til nøyaktig 2 linjeskift (som representerer nøyaktig én blank linje).
+    final_content = re.sub(r'\n{3,}', '\n\n', final_content)
+    
+    # Fjern eventuelle ledende/trailende linjeskift i hele dokumentet
+    final_content = final_content.strip() + '\n'
 
     # Skriv oppdatert innhold tilbake til filen
     with open(file_path, 'w', encoding='utf-8') as f:
         f.write(final_content)
         
-    print(f"Suksess! Korrigerte matematikk-formateringen i: {file_path}")
+    print(f"Suksess! Korrigerte matematikk-formateringen og linjeavstand i: {file_path}")
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
