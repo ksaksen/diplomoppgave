@@ -591,7 +591,7 @@ $$
 We have then expressed the reflection and transmission coefficients by means of the Green function; as we wanted. As we first are dealing with observables we might for example look at the current density $j(x)$:
 
 $$
-j(x) = \frac{e\hbar}{2im} \left( \Phi^{*}(x) \frac{\partial\Phi(x)}{\partial x} - \frac{\partial\Phi(x)^{*}}{\partial x} \Phi(x) \right). \quad (1.54)
+j(x) = \frac{e\hbar}{2im} \left( \Phi^{\ast}(x) \frac{\partial\Phi(x)}{\partial x} - \frac{\partial\Phi(x)^{\ast}}{\partial x} \Phi(x) \right). \quad (1.54)
 $$
 
 The operator which belongs to $j(x)$ is identical to the velocity operator.
