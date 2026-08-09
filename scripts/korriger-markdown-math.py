@@ -13,14 +13,17 @@ def fix_markdown_math(file_path):
     # Normaliser linjeskift til standard unix \n for pålitelig regex-matching
     content = content.replace("\r\n", "\n")
 
-    # Trinn 1: Splitt enkeltlinje-blokkformler ($$ formel $$) til flerlinje-formler
+    # Trinn 1: Erstatt \tag{x} med \quad (x) for Docusaurus-kompatibilitet
+    content = re.sub(r'\s*\\tag\{([^}]+)\}', r' \\quad (\1)', content)
+
+    # Trinn 2: Splitt enkeltlinje-blokkformler ($$ formel $$) til flerlinje-formler
     # Slik at åpnings- og lukkemarkørene ($$) står på egne linjer for GitHub
     pattern_single_line = r'(?m)^\s*\$\$(.+?)\$\$\s*$'
-    
+
     def split_single_line(match):
         eq = match.group(1).strip()
         return f"$$\n{eq}\n$$"
-        
+
     content_fixed_lines = re.sub(pattern_single_line, split_single_line, content)
 
     # Trinn 2: Finn alle $$ ... $$ blokker, pakk dem inn i aligned-miljøet om nødvendig,

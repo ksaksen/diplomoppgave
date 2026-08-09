@@ -23,17 +23,17 @@ Here is
 and
 
 $$
-H = -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x), \tag{1.2}
+H = -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x), \quad (1.2)
 $$
 
 $$
-\Psi = \Phi \exp \left( i \frac{E}{\hbar} t \right). \tag{1.3}
+\Psi = \Phi \exp \left( i \frac{E}{\hbar} t \right). \quad (1.3)
 $$
 
 The last equation shows how $\Psi$ might be separated into a time-independent part $\Phi$ and an exponential time factor, which is nothing more than a plane wave in the dimension of time. $H$ is the Hamiltonian for the electron in the semiconductor, and $V(x)$ is the potential barrier. Specifically, $V(x)$ might be due to the different band structure of different semiconductors. Using the mentioned separation, we obtain the time-independent Schrödinger equation:
 
 $$
-H \Phi = E \Phi. \tag{1.4}
+H \Phi = E \Phi. \quad (1.4)
 $$
 
 Here $E$ is the energy eigenvalue for the wave function $\Phi$. In the problem we are considering, we have a situation where a free electron is partly reflected by and partly transmitted through a potential barrier. As the kinetic energy of the incoming electron is assumed to be constant, the only effect of the separation is that the potential $V$ is also treated as constant in time. This situation is illustrated in Figure 1.1, that is, for a general potential barrier.
@@ -951,7 +951,7 @@ and
 <!-- START SIDE 19 -->
 
 $$
-\hat{v}|\alpha\rangle = \sum_\beta |\beta\rangle \langle\beta|\hat{v}|\alpha\rangle = v_\alpha|\alpha\rangle \tag{1.85}
+\hat{v}|\alpha\rangle = \sum_\beta |\beta\rangle \langle\beta|\hat{v}|\alpha\rangle = v_\alpha|\alpha\rangle \quad (1.85)
 $$
 
 since $\langle\beta|\hat{v}|\alpha\rangle$ is equal to $v_\alpha\delta_{\alpha\beta}$.
@@ -960,39 +960,39 @@ since $\langle\beta|\hat{v}|\alpha\rangle$ is equal to $v_\alpha\delta_{\alpha\b
 For a given $E$ and $k$-parallel, we want to find the solution of the time independent Schrödinger equation $(E - H)|\alpha\rangle = 0$ and find $k_\alpha$ and $|\alpha\rangle$ for $\alpha$ between 1 and 10, that is find the complex band structure. We define the operator $Y$ as follows:
 
 $$
-\Psi_{i+1} = Y\Psi_i \tag{1.86}
+\Psi_{i+1} = Y\Psi_i \quad (1.86)
 $$
 
 Here
 
 $$
 \begin{aligned}
-\langle i+1|\Psi \rangle \equiv \Psi_{i+1} \\ = \sum_\alpha \langle i+1|\alpha \rangle \langle\alpha|\Psi \rangle \\ = Y \sum_\alpha \langle i|\alpha \rangle \langle\alpha|\Psi \rangle \\ = Y\Psi_i. \tag{1.87}
+\langle i+1|\Psi \rangle \equiv \Psi_{i+1} \\ = \sum_\alpha \langle i+1|\alpha \rangle \langle\alpha|\Psi \rangle \\ = Y \sum_\alpha \langle i|\alpha \rangle \langle\alpha|\Psi \rangle \\ = Y\Psi_i. \quad (1.87)
 \end{aligned}
 $$
 
 This leads to
 
 $$
-\sum_\alpha \alpha_{i+1} \Psi_\alpha = \sum_\alpha Y \alpha_i \Psi_\alpha \tag{1.88}
+\sum_\alpha \alpha_{i+1} \Psi_\alpha = \sum_\alpha Y \alpha_i \Psi_\alpha \quad (1.88)
 $$
 
 It is then easy to see that
 
 $$
-\alpha_{i+1} = Y\alpha_i \tag{1.89}
+\alpha_{i+1} = Y\alpha_i \quad (1.89)
 $$
 
 Since $\alpha$ is a Bloch wave we can write
 
 $$
-\alpha_{i+1} = \exp\left(ik_\alpha \frac{a}{2}\right)\alpha_i \tag{1.90}
+\alpha_{i+1} = \exp\left(ik_\alpha \frac{a}{2}\right)\alpha_i \quad (1.90)
 $$
 
 and this shows that the operator $Y$ can be associated with $\exp\left(ik_\alpha \frac{a}{2}\right)$, and we can write
 
 $$
-Y\alpha_i = \exp\left(ik_\alpha \frac{a}{2}\right)\alpha_i \tag{1.91}
+Y\alpha_i = \exp\left(ik_\alpha \frac{a}{2}\right)\alpha_i \quad (1.91)
 $$
 
 Repeating:
