@@ -1,0 +1,4 @@
+secret/
+scripts/config.py
+**/__pycache__/
+scripts/tmp_side_*.jpg
