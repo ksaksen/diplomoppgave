@@ -350,9 +350,7 @@ $$
 may be written
 
 $$
--(E - H)|\Phi^\circ \rangle = (-E + \epsilon_0 + u \exp(ika) + u \exp(-ika))\Sigma_{j \le -2} \exp(ikja)|j \rangle
-+ |-1 \rangle (-E + \epsilon_0 + u \exp(-ika) + \epsilon_0 \exp(-ika) + u \exp(-2ika))
-+ |0 \rangle u \exp(ika).
+-(E - H)|\Phi^\circ \rangle = (-E + \epsilon_0 + u \exp(ika) + u \exp(-ika))\Sigma_{j \le -2} \exp(ikja)|j \rangle + |-1 \rangle (-E + \epsilon_0 + u \exp(-ika) + \epsilon_0 \exp(-ika) + u \exp(-2ika)) + |0 \rangle u \exp(ika).
 $$
 
 Earlier we calculated the dispersion relation
