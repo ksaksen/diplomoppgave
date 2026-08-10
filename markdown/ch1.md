@@ -362,8 +362,8 @@ $$
 |\Phi_k' \rangle = G(E)(|-1 \rangle u + |0 \rangle u \exp(ika)) \quad (1.35)
 $$
 
-* `$|\Phi^\circ \rangle$` is the incoming part of the wave function for $j \le -1$, an area where the potential $V$ is zero, so that we got a known solution of the time independent Schrödinger equation.
-* Through the expression `$|\Phi \rangle = |\Phi^\circ \rangle + |\Phi' \rangle$` we now got the unknown `$|\Phi' \rangle$` expressed by the known `$|\Phi^\circ \rangle$`.
+* $|\Phi^\circ \rangle$ is the incoming part of the wave function for $j \le -1$, an area where the potential $V$ is zero, so that we got a known solution of the time independent Schrödinger equation.
+* Through the expression $|\Phi \rangle = |\Phi^\circ \rangle + |\Phi' \rangle$ we now got the unknown $|\Phi' \rangle$ expressed by the known $|\Phi^\circ \rangle$.
 
 We use the notation $G_{ij} = \langle i|G(E)|j \rangle$ for the matrix element $ij$ of the Green function $G(E)$. Then we get
 
@@ -624,7 +624,7 @@ $$
 
 in agreement with the continuum expression 1.54.
 
-## 1.6 1D$\rightarrow$3D, single band$\rightarrow$multiple band.
+## 1.6 1D $\rightarrow$ 3D, single band $\rightarrow$ multiple band.
 
 In the previous sections I have presented theory that is valid only for one dimension and for structures with one band only. For generalizing to three dimensions and multiple bands we have to consider several aspects. They are treated in the following subsections.
 
@@ -665,7 +665,7 @@ $$
 
 (1.61)
 
-Here we have $\vec{a}_i \cdot \vec{A}_j = 2\pi\delta_{ij}$, where $\delta_{ij}$ has the value 1 for $i$ and $j$ equal and zero otherwise.
+Here we have $\mathbf{a}_{i} \cdot \mathbf{A}_{j} = 2\pi\delta_{i j}$, where $\delta_{i j}$ has the value 1 for $i$ and $j$ equal and zero otherwise.
 In the first Brillouin zone we have $\vec{k} = 2\pi/a*(u1, u2, u3)$ where $u1 + u2 + u3$ is less than or equal to 3/2. If we define the transport direction in the semiconductor structure as the [1,0,0] direction, we get the following four parallel vectors: Two for each kind of atomic layer, (that is; cation or anion), set up by the vectors from one atom to its closest neighbour in each of the two independent directions in the layers orthogonal to the current direction:
 
 $$
