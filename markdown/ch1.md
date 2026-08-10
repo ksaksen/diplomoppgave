@@ -13,7 +13,7 @@ The main purpose of this theory chapter is to show how one can go from the simpl
 In this section I will show how the wave function for an electron which is passing through a potential barrier in one dimension can be expressed by the reflection and transmission amplitudes $r(k)$ and $t(k)$. I will also show how the amplitudes $r$ and $t$ are expressed by the wave function on the surface between different semiconductors, or less specifically, how the amplitudes are expressed by means of the boundary conditions of the potential barrier. We start with the time-dependent Schrödinger equation:
 
 $$
-H\Psi = i\hbar \frac{\partial}{\partial t}\Psi
+H\Psi = i\hbar \frac{\partial}{\partial t}\Psi \quad (1.1)
 $$
 
 Here is
@@ -23,11 +23,11 @@ Here is
 and
 
 $$
-H = -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x), \quad (1.2)
+H = -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x) \quad (1.2)
 $$
 
 $$
-\Psi = \Phi \exp \left( i \frac{E}{\hbar} t \right). \quad (1.3)
+\Psi = \Phi \exp \left( i \frac{E}{\hbar} t \right) \quad (1.3)
 $$
 
 The last equation shows how $\Psi$ might be separated into a time-independent part $\Phi$ and an exponential time factor, which is nothing more than a plane wave in the dimension of time. $H$ is the Hamiltonian for the electron in the semiconductor, and $V(x)$ is the potential barrier. Specifically, $V(x)$ might be due to the different band structure of different semiconductors. Using the mentioned separation, we obtain the time-independent Schrödinger equation:
@@ -234,32 +234,26 @@ $$
 Here $|\Phi^\circ\rangle$ is the wave function for a free particle, with the characteristic Bloch form, and is valid only for the incoming electrons while the perturbation $|\Phi'\rangle$ gives contribution to the wave function all over the structure. The energy eigenvalue of this function is known. The Schrödinger equation gives
 
 $$
-(E - H)|\Phi'\rangle = -(E - H)|\Phi^\circ\rangle.
+(E - H)|\Phi'\rangle = -(E - H)|\Phi^\circ\rangle \quad (1.24)
 $$
-
-(1.24)
 
 To proceed in our search for the perturbation we must define a Green function $G(E)$:
 
 $$
-(E - H)G(E) = 1,
+(E - H)G(E) = 1
 $$
-
-(1.25)
 
 or
 
 $$
-G(E) = \frac{1}{E - H}.
+G(E) = \frac{1}{E - H} \quad (1.25)
 $$
 
 Using the Green function we can write the equation for the perturbation $|\Phi'\rangle$:
 
 $$
-|\Phi'\rangle = G(E)[-(E - H)|\Phi^\circ\rangle].
+|\Phi'\rangle = G(E)[-(E - H)|\Phi^\circ\rangle] \quad (1.26)
 $$
-
-(1.26)
 
 ## 1.3 The Green function $G(E)$.
 
@@ -268,22 +262,20 @@ In this section I will show how to find the matrix elements of the Green functio
 First we recapture (in short) what we have already obtained. We can consider the problem of a free electron with the Schrödinger equation given by
 
 $$
--\frac{\hbar^2}{2m} \frac{\partial^2 \Phi}{\partial x^2} = E \Phi.
+-\frac{\hbar^2}{2m} \frac{\partial^2 \Phi}{\partial x^2} = E \Phi
 $$
 
 If one assumes that the eigenstate changes linearly between nearest neighbor lattice points one get after the discretization yields:
 
 $$
-\frac{\partial^2 \Phi_i}{\partial x^2} = \frac{\Phi_{i+1} + \Phi_{i-1} - 2\Phi_i}{(\Delta x)^2}.
+\frac{\partial^2 \Phi_i}{\partial x^2} = \frac{\Phi_{i+1} + \Phi_{i-1} - 2\Phi_i}{(\Delta x)^2} \quad (1.27)
 $$
-
-(1.27)
 
 13
 <!-- SLUTT SIDE 7 -->
 
 <!-- START SIDE 8 -->
-This gives for the Schrödinger equation :
+This gives for the Schrödinger equation:
 
 $$
 -\frac{\hbar^2}{2m (\Delta x)^2}(\Phi_{i+1} + \Phi_{i-1} - 2\Phi_i) = E\Phi_i \quad (1.28)
@@ -295,33 +287,32 @@ $$
 H = \sum_j [|j\rangle \epsilon_0 \langle j| + |j\rangle u \langle j+1| + |j\rangle u \langle j-1|] \quad (1.29)
 $$
 
-With this Hamiltonian we get the following Schrödinger equation :
-That is
+With this Hamiltonian we get the following Schrödinger equation:
 
 $$
 \langle i|H|\Phi\rangle = \langle i|E|\Phi\rangle \equiv E\Phi_i \quad (1.30)
 $$
 
-$$
-= \langle i| \sum_j [|j\rangle \epsilon_0 \langle j| + |j\rangle u \langle j+1| + |j\rangle u \langle j-1|] |\Phi\rangle
-$$
+That is
 
 $$
-= \epsilon_0 \Phi_i + u\Phi_{i+1} + u\Phi_{i-1}
-$$
-
-$$
-= E\Phi_i.
+\begin{matrix}
+\langle i|E|\Phi\rangle & = \langle i| \sum_j [|j\rangle \epsilon_0 \langle j| + |j\rangle u \langle j+1| + |j\rangle u \langle j-1|] |\Phi\rangle \\
+& = \displaystyle \epsilon_0 \Phi_i + u\Phi_{i+1} + u\Phi_{i-1} \\
+& = \displaystyle E\Phi_i
+\end{matrix}
 $$
 
 By comparing with the expression 1.28 obtained from the assumption 1.27 we can see the following:
 
 $$
-\frac{\hbar^2}{m(\Delta x)^2} = \epsilon_0 \quad \text{,and}
+\frac{\hbar^2}{m(\Delta x)^2} = \epsilon_0
 $$
 
+and
+
 $$
--\frac{\hbar^2}{2m(\Delta x)^2} = u.
+-\frac{\hbar^2}{2m(\Delta x)^2} = u
 $$
 
 From this we can conclude that
