@@ -665,7 +665,7 @@ $$
 
 (1.61)
 
-Here we have $\mathbf{a}_{i} \cdot \mathbf{A}_{j} = 2\pi\delta_{i j}$, where $\delta_{i j}$ has the value 1 for $i$ and $j$ equal and zero otherwise.
+Here we have $\mathbf{a}_{i} \cdot \mathbf{A}_{j} = 2\pi\delta_{i j}$, where $\delta_{i j}$ has the value 1 for $i$ and $j$ equal and zero otherwise. 
 In the first Brillouin zone we have $\vec{k} = 2\pi/a*(u1, u2, u3)$ where $u1 + u2 + u3$ is less than or equal to 3/2. If we define the transport direction in the semiconductor structure as the [1,0,0] direction, we get the following four parallel vectors: Two for each kind of atomic layer, (that is; cation or anion), set up by the vectors from one atom to its closest neighbour in each of the two independent directions in the layers orthogonal to the current direction:
 
 $$
