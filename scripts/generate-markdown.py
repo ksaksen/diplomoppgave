@@ -43,41 +43,7 @@ try:
         print(f"[Side {side_nr}] Sender bilde til Gemini...")
         bilde_fil = client.files.upload(file=midlertidig_bilde_sti)
 
-        # Bruker raw-string (r) og doble krøllparenteser for å unngå LaTeX-krash i Python-strengformatering
-        instruksjon = rf"""
-        Du er en ekspert på halvlederfysikk, kvantemekanikk, Docusaurus MDX og LaTeX/KaTeX-formatering.
-        Dette bildet er SIDE {side_nr} fra en diplomoppgave.
-        Din jobb er å transkribere siden til helt ren, feilfri Docusaurus-kompatibel Markdown (.md).
 
-        FØLG DISSE REGLENE STRENGT SÅ DOCUSAURUS MDX / KATEX IKKE KRASJER COMPILEREN:
-
-        1. DOCUSAURUS MDX SIKKERHET (KRITISK):
-           - Siden Docusaurus bruker MDX, blir rå krøllparenteser '{{' og '}}' i vanlig tekst tolket som JavaScript. Hvis siden inneholder krøllparenteser i vanlig tekst eller kodeeksempler, MÅ de escapes slik: '\{{' og '\}}'. (Unntak: Inni matte-modus som $\vec{{r}}$ skal de IKKE escapes).
-           - Mindre-enn og større-enn-tegn ('<' og '>') i vanlig tekst blir tolket som HTML-tags og vil krasje Docusaurus! Du MÅ enten bruke matematiske tegn i dollartegn ($<$ eller $>$) eller erstatte dem med &lt; og &gt; i ren tekst.
-
-        2. MATEMATIKK & FORMELER (KATEX):
-           - Bruk ETT enkelt dollartegn ($...$) for inline-matematikk, f.eks. $E_k$, $\epsilon_0$, $m_0$. ALDRI bruk \\( eller \\)!
-           - Bruk DOBLE dollartegn ($$...$$) for stående formler (display math).
-           - VIKTIG FOR DOCUSAURUS: Det MÅ være en helt TOM LINJE før og etter en $$...$$ blokk. Eksempel:
-             
-             Teksten her.
-             
-             $$
-             H\\Psi = E\\Psi
-             $$
-             
-             Neste tekstblokk.
-           - ALDRI ha mellomrom mellom dollartegnene og innholdet. Skriv $E=mc^2$, IKKE $ E=mc^2 $.
-           - Kvantemekanikk (Bra-Ket): Bruk \\langle m | og | j \\rangle. ALDRI bruk uformaterte tegn som |m> eller <m| da '>' og '<' krasjer MDX-parseren fullstendig.
-
-        3. REN TEKST OG STRUKTUR:
-           - Rett opp skrivefeil i maskinskriften, men bevar alt faglig innhold nøyaktig.
-           - Tekst som "and therefore," skal formateres som vanlig tekst (*and therefore,*), IKKE som en LaTeX-formel ($and therefore,$).
-
-        4. OUTPUT-FORMAT:
-           - Pass på at alle $$...$$ blokker er LUKKET før siden slutter.
-           - Svar KUN med den rene Markdown-teksten for denne siden. IKKE pakk svaret inn i ```markdown ... ``` kodeblokker.
-        """
 
 
 
@@ -112,6 +78,46 @@ try:
             f.write(side_markdown)
             f.write(f"\n<!-- SLUTT SIDE {side_nr} -->\n")
 
+        # Bruker raw-string (r) og doble krøllparenteser for å unngå LaTeX-krash i Python-strengformatering
+        instruksjon = rf"""
+        Du er en ekspert på halvlederfysikk, kvantemekanikk, Docusaurus MDX og LaTeX/KaTeX-formatering.
+        Dette bildet er SIDE {side_nr} fra en diplomoppgave.
+        Din jobb er å transkribere siden til helt ren, feilfri Docusaurus-kompatibel Markdown (.md).
+
+        FØLG DISSE REGLENE STRENGT SÅ DOCUSAURUS MDX / KATEX IKKE KRASJER COMPILEREN:
+
+        1. DOCUSAURUS MDX SIKKERHET (KRITISK):
+           - Siden Docusaurus bruker MDX, blir rå krøllparenteser '{{' og '}}' i vanlig tekst tolket som JavaScript. Hvis siden inneholder krøllparenteser i vanlig tekst eller kodeeksempler, MÅ de escapes slik: '\{{' og '\}}'. (Unntak: Inni matte-modus som \(\vec{{r}}\) skal de IKKE escapes).
+           - Mindre-enn og større-enn-tegn ('<' og '>') i vanlig tekst blir tolket som HTML-tags og vil krasje Docusaurus! Du MÅ enten bruke matematiske tegn i dollartegn (< eller >) eller erstatte dem med &lt; og &gt; i ren tekst.
+           - ALDRI generer HTML-entiteter som '&amp;' i stedet for '&' eller '=' i formler eller tabeller. Bruk rå tekst-tegn.
+
+        2. ORBITAL-NOTASJON OG SPESIALTEGN (VIKTIG):
+           - S-stjerne-orbitaler (s*) må ALDRI skrives som s^_- eller s^_. Skriv det ALLTID som \(s^*\) eller \(s^{{\ast}}\) i inline-matematikk.
+           - Orbital-navn som sp3s* eller liknende må ALDRI splittes opp i ren tekst. Pakk dem inn som inline-matematikk, for eksempel: \(sp^3s^*\).
+           - Ved bruk av hevet stjerne i formler, pass på syntaksen. Bruk \(s^{{\ast}}\) eller \(s^*\), aldri naken kombinasjon av heving og senking uten klammer.
+
+        3. MATEMATIKK & FORMELER (KATEX):
+           - Bruk ETT enkelt dollartegn (...) for inline-matematikk, f.eks. \(E_k\), ε₀, m₀. ALDRI bruk \\( eller \\)!
+           - Bruk DOBLE dollartegn (\[...\]) for stående formler (display math).
+           - VIKTIG FOR DOCUSAURUS: Det MÅ være en helt TOM LINJE før og etter en \[...\] blokk. Eksempel:
+             
+             Teksten her.
+             
+             \[H\Psi = E\Psi\]
+             
+             Neste tekstblokk.
+           - ALDRI ha mellomrom mellom dollartegnene og innholdet. Skriv E=mc², IKKE  E=mc² .
+           - Kvantemekanikk (Bra-Ket): Bruk \(\langle m \vert{} og \vert{} j \rangle.\) ALDRI bruk uformaterte tegn som |m> eller <m| da '>' og '<' krasjer MDX-parseren fullstendig.
+
+        4. REN TEKST OG STRUKTUR:
+           - Rett opp skrivefeil i maskinskriften, men bevar alt faglig innhold nøyaktig.
+           - Tekst som "and therefore," skal formateres som vanlig tekst (*and therefore,*), IKKE som en LaTeX-formel (and therefore,).
+
+        5. OUTPUT-FORMAT:
+           - Pass på at alle \[...\] blokker er LUKKET før siden slutter.
+           - Svar KUN med den rene Markdown-teksten for denne siden. IKKE pakk svaret inn i ```markdown ... ``` kodeblokker.
+        """
+        
         if os.path.exists(midlertidig_bilde_sti):
             os.remove(midlertidig_bilde_sti)
 
