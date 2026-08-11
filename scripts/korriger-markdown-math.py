@@ -2,57 +2,74 @@ import sys
 import os
 import re
 
-def split_matrix_block(content):
+def parse_and_format_raw_data(content):
     """
-    Finner lange tabeller/matriser i teksten og splitter dem 
-    på midten til to uavhengige, kortere tabeller under hverandre.
+    Fanger opp de lange, horisontale rådatastringene med fysikk-parametere
+    og gjør dem om til ekte, strukturerte Markdown-tabeller med to kolonner.
     """
-    # Fanger opp innholdet mellom \begin{array}... og \end{array} eller \begin{aligned}... og \end{aligned}
-    pattern = r'\\begin\{(array|aligned)\}(.*?)\\end\{\1\}'
+    # Regex som finner linjer som starter med et tall, inneholder "E(s,c)" og slutter med "in Angstrom"
+    # Dette matcher de lange rådatastringene dine uansett om det er rotete linjeskift i dem fra før.
+    pattern = r'(-?\d+\.\d+\s+E\(s\s*,\s*c\).*?d=bondlength in Angstrom)'
     
-    def replacer(match):
-        block_inner = match.group(2).strip()
-        
-        # Finn alle linjer basert på enten doble backslasher (\\) eller rene linjeskift
-        # Fjerner tomme linjer
-        raw_lines = [line.strip() for line in block_inner.split('\\\\') if line.strip()]
-        if not raw_lines:
-            # Prøv vanlig linjeskift hvis \\ ikke ble brukt mellom radene
-            raw_lines = [line.strip() for line in block_inner.split('\n') if line.strip()]
+    matches = re.findall(pattern, content, re.DOTALL)
+    if not matches:
+        return content
 
-        clean_lines = []
-        for line in raw_lines:
-            # Rens unna HTML-entiteter her også for sikkerhets skyld
-            cleaned = line.replace("&amp;", "&")
-            clean_lines.append(cleaned)
-
-        totalt_antall_rader = len(clean_lines)
+    for i, match in enumerate(matches):
+        # Rens teksten og lag en ren liste med ord/tall
+        tokens = match.replace("\n", " ").split()
         
-        # Hvis tabellen har mindre enn 4 rader totalt, er det ingen vits i å splitte den
-        if totalt_antall_rader < 4:
-            return match.group(0)
+        # Vi skal parre sammen tallene og symbolene
+        # Eksempel på par: ["E(s,c)", "-2.7219"]
+        pairs = []
+        
+        # Gå gjennom tokens for å finne verdi + symbol par
+        j = 0
+        while j < len(tokens):
+            token = tokens[j]
             
-        # Finn midtpunktet for splittingen
-        midtpunkt = (totalt_antall_rader + 1) // 2
-        
-        tabell1_rader = clean_lines[:midtpunkt]
-        tabell2_rader = clean_lines[midtpunkt:]
-        
-        # Bygg opp de to nye adskilte tabellene med Docusaurus-kompatibel $$ \begin{aligned}
-        output = []
-        
-        output.append("$$\n\\begin{aligned}")
-        output.append(" \\\\\n".join(tabell1_rader))
-        output.append("\n\\end{aligned}\n$$\n")
-        
-        output.append("$$\n\\begin{aligned}")
-        output.append(" \\\\\n".join(tabell2_rader))
-        output.append("\n\\end{aligned}\n$$")
-        
-        return "\n".join(output)
+            # Sjekk om det er et tall (verdi)
+            if re.match(r'^-?\d+\.\d+$', token):
+                verdi = token
+                # Sjekk om neste token er et symbol (f.eks. E(s,c) eller V(s,s))
+                if j + 1 < len(tokens) and ('E(' in tokens[j+1] or 'V(' in tokens[j+1]):
+                    symbol = tokens[j+1]
+                    # Normaliser s* og sp3s* så det blir pen inline LaTeX
+                    symbol = symbol.replace("s*", "s^*").replace("s^*a", "s^*_a").replace("s^*c", "s^*_c")
+                    pairs.append((f"${symbol}$", verdi))
+                    j += 2
+                    continue
+            # Fang opp bondlength til slutt
+            if token == "d=bondlength":
+                # Finn verdien som kom rett før (f.eks. 2.62)
+                if pairs:
+                    last_val = tokens[j-1]
+                    # Hvis forrige token var et rent tall, var det sannsynligvis bondlength-verdien
+                    if re.match(r'^\d+\.\d+$', last_val):
+                        # Fjern den feilaktige forrige parringen hvis den tok verdien til bondlength
+                        if pairs[-1][1] == last_val:
+                            pairs.pop()
+                        pairs.append(("$d$ (bond length)", f"{last_val} Å"))
+            j += 1
 
-    return re.sub(pattern, replacer, content, flags=re.DOTALL)
+        if not pairs:
+            continue
 
+        # Bygg en kjempefin Markdown-tabell for Docusaurus
+        tittel = "**InAs Matriseelementer**" if i == 0 else "**GaSb Matriseelementer**"
+        
+        table_md = []
+        table_md.append(f"\n### {tittel}\n")
+        table_md.append("| Element / Parameter | Verdi (eV) |")
+        table_md.append("| :--- | :--- |")
+        for sym, val in pairs:
+            table_md.append(f"| {sym} | {val} |")
+        table_md.append("\n")
+        
+        formatted_table = "\n".join(table_md)
+        content = content.replace(match, formatted_table)
+
+    return content
 
 def fix_markdown_math(file_path):
     if not os.path.exists(file_path):
@@ -66,9 +83,9 @@ def fix_markdown_math(file_path):
     content = content.replace("\r\n", "\n")
 
     # =========================================================================
-    # TRINN 1: RESTRUKTURERING AV TABELLER (NY)
+    # TRINN 1: RESTRUKTURERING AV RÅDATA TIL EKTE TABELLER (NY)
     # =========================================================================
-    content = split_matrix_block(content)
+    content = parse_and_format_raw_data(content)
 
     # 1. Erstatt HTML-entiteter som &amp; inni formler med ekte tegn
     content = content.replace("&amp;", "&")
@@ -133,7 +150,7 @@ def fix_markdown_math(file_path):
     with open(file_path, 'w', encoding='utf-8') as f:
         f.write(final_content)
         
-    print(f"Suksess! Korrigerte matematikk-formateringen og delte matrisene i: {file_path}")
+    print(f"Suksess! Genererte ekte tabeller ut av rådatablokkene i: {file_path}")
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
