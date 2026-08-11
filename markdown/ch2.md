@@ -7,83 +7,126 @@ Energy vectors, hopping matrices, surface Green matrices and the local elements 
 
 In this chapter I will present the VCA parameters, measured by Vogl, Hjalmarson and Dow, presented in article [1]. That is, only for the materials I use in this diploma work. I will show how to use these parameters to make characteristic features for the materials such as energy vectors and hopping matrices. Further I will try to show how one uses the features mentioned above to find surface Green matrices for the materials. I hope this kind of matrices is known from the theory chapter, chapter 1. So, the actual content of this chapter will be an attempt to link the theory to the VCA parameters from article [1]. That is, the content of this chapter gives the formula for the features that is needed to compute transport Green matrices, and relates those formulas to the empirical data given in article [1].
 
-## 
-### Matriseelementer
-| Element / Parameter | Verdi (eV) |
-| :--- | :--- |
-| $$E(s,c)$$ | -2.7219 |
-| $$E(p,c)$$ | 3.7201 |
-| $$E(s^{\ast},c)$$ | 6.7401 |
-| $$E(s,a)$$ | -9.5381 |
-| $$E(p,a)$$ | 0.9099 |
-| $$E(s^{\ast},a)$$ | 7.4099 |
-| $$V(s,s)$$ | -5.6052 |
-| $$V(x,x)$$ | 1.8398 |
-| $$V(x,y)$$ | 1.4693 |
-| $$V(sa,pc)$$ | 3.0354 |
-| $$V(pa,sc)$$ | 5.4389 |
-| $$V(s^{\ast}a,pc)$$ | 3.3744 |
-| $$V(pa,s^{\ast}c)$$ | 3.9097 |
-| $$V(s^{\ast},s^{\ast})$$ | 0.0000 |
-| $d$ (bond length) | 2.62 Å |
+## 2.1 The content of the Vogl files
 
-### Matriseelementer
-| Element / Parameter | Verdi (eV) |
-| :--- | :--- |
-| $$E(s,c)$$ | -3.8993 |
-| $$E(p,c)$$ | 2.9146 |
-| $$E(s^{\ast},c)$$ | 5.9846 |
-| $$E(s,a)$$ | -7.3207 |
-| $$E(p,a)$$ | 0.8554 |
-| $$E(s^{\ast},a)$$ | 6.6354 |
-| $$V(s,s)$$ | -6.1567 |
-| $$V(x,x)$$ | 1.5789 |
-| $$V(x,y)$$ | 1.1285 |
-| $$V(sa,pc)$$ | 4.9601 |
-| $$V(pa,sc)$$ | 4.6675 |
-| $$V(s^{\ast}a,pc)$$ | 4.9895 |
-| $$V(pa,s^{\ast}c)$$ | 4.2180 |
-| $$V(s^{\ast},s^{\ast})$$ | 0.0000 |
-| $d$ (bond length) | 2.64 Å |
+The Hamiltonian for the 1-D single band system is written as in equation 1.12,
 
-Table 
-### InAs Matriseelementer
-| Element / Parameter | Verdi (eV) |
-| :--- | :--- |
-| $$E(s,c)$$ | -2.0716 |
-| $$E(p,c)$$ | 3.0163 |
-| $$E(s^{\ast},c)$$ | 6.1543 |
-| $$E(s,a)$$ | -6.1714 |
-| $$E(p,a)$$ | 0.9807 |
-| $$V(s^{\ast},a)$$ | 6.7607 |
-| $$V(s,s)$$ | -5.6448 |
-| $$V(x,x)$$ | 1.7199 |
-| $$V(x,y)$$ | 3.6648 |
-| $$V(sa,pc)$$ | 4.9121 |
-| $$V(pa,sc)$$ | 4.2137 |
-| $$V(s^{\ast}a,pc)$$ | 4.3662 |
-| $$V(pa,s^{\ast}c)$$ | 3.0739 |
-| $$V(s^{\ast},s^{\ast})$$ | 0.0000 |
-| $d$ (bond length) | 2.66 Å |
+$$
+H = \sum_j |j \rangle \epsilon_0 \langle j| + |j \rangle u \langle j \pm 1| \quad (2.1)
+$$
 
-### Matriseelementer
-| Element / Parameter | Verdi (eV) |
-| :--- | :--- |
-| $$E(s,c)$$ | -3.4643 |
-| $$E(p,c)$$ | 2.9162 |
-| $$E(s^{\ast},c)$$ | 5.9362 |
-| $$E(s,a)$$ | -8.0157 |
-| $$E(p,a)$$ | 0.6738 |
-| $$E(s^{\ast},a)$$ | 6.4530 |
-| $$V(s,s)$$ | -5.5193 |
-| $$V(x,x)$$ | 1.4018 |
-| $$V(x,y)$$ | 3.8761 |
-| $$V(sa,pc)$$ | 3.7880 |
-| $$V(pa,sc)$$ | 4.5900 |
-| $$V(s^{\ast}a,pc)$$ | 3.5666 |
-| $$V(pa,s^{\ast}c)$$ | 3.4048 |
-| $$V(s^{\ast},s^{\ast})$$ | 0.0000 |
-| $d$ (bond length) | 2.81 Å |
+In the 
+
+$$
+sp^3s^{\ast}
+$$
+
+ model we have 13 independent matrix elements to build up the energy vectors and the hopping matrices, equation 1.64:
+
+30
+<!-- SLUTT SIDE 1 -->
+
+<!-- START SIDE 2 -->
+
+$$
+\begin{array}{ll}
+E(s, b) & = \langle s, b, \vec{R} | H | s, b, \vec{R} \rangle \\
+E(p, b) & = \langle p, b, \vec{R} | H | p, b, \vec{R} \rangle \\
+E(s^{\ast}, b) & = \langle s^{\ast}, b, \vec{R} | H | s^{\ast}, b, \vec{R} \rangle \\
+V(s, s) & = 4 \langle s, a, \vec{R} | H | s, c, \vec{R} \rangle \\
+V(x, x) & = 4 \langle px, a, \vec{R} | H | px, c, \vec{R} \rangle \\
+V(x, y) & = 4 \langle px, a, \vec{R} | H | py, c, \vec{R} \rangle \\
+V(sa, pc) & = 4 \langle s, a, \vec{R} | H | px, c, \vec{R} \rangle \\
+V(pa, sc) & = 4 \langle p, a, \vec{R} | H | s, c, \vec{R} \rangle \\
+V(s^{\ast}a, pc) & = 4 \langle s^{\ast}, a, \vec{R} | H | px, c, \vec{R} \rangle \\
+V(pa, s^{\ast}c) & = 4 \langle px, a, \vec{R} | H | s^{\ast}, c, \vec{R} \rangle
+\end{array} \quad (2.2)
+$$
+
+The 3 first lines represent 6 independent elements when we insert values for $b$; anion or cation. In this approximation $s^{\ast}s$ and $s^{\ast}s^{\ast}$ elements are set to zero.
+As only nearest neighbors are interacting, the $sp^3s^{\ast}$ model then has a Hamilton operator as follows:
+
+$$
+H = \sum_{n,b,i} |n, b, \vec{R}_i \rangle E(n,b) \langle n, b, \vec{R}_i | + \sum_{n,b,j=i+\frac{a}{4}(1,1,1)} |n, b, \vec{R}_i \rangle V \langle n, b, \vec{R}_j | \quad (2.3)
+$$
+
+As mentioned earlier I use VCA parameters for pure materials measured by Vogl as a basis for my calculations. Except from in the calculations of some offsets, where I have considered not only bandgaps that I find from these VCA parameters but also the bandgaps given in the article written by Y.H.Wang, M.H.Lium, M.P.Houng, J.F.Chen and A.Y.Cho, article [2].
+For the materials involved in this diplomawork we have the VCA parameters that is given in tables 2.1, 2.2 and 2.3.
+In article [1] $V(s^{\ast}, s^{\ast})$ is included even though it's value is measured to be zero. I have also included the bondlengths to the set of features that is presented in equations 1.64, see at the end of the list. These bondlengths are also found from article [1].
+Tables 2.1 and the table on top in table 2.2 gives the needed VCA parameters for the layers of the structure that I work with. But, due to my calculation method I also need the VCA parameters in tables on bottom of 2.2 and table 2.3. The content of these tables is the empirical data for the materials one can say that there is one monolayer of at every boundary between different material layers. For the realisations of the structure in my diplomawork we find $AlAs$ and $InSb$ as new materials at the boundaries.
+<!-- SLUTT SIDE 2 -->
+
+<!-- START SIDE 3 -->
+-2.7219 $E(s,c)$
+3.7201 $E(p,c)$
+6.7401 $E(s^{\ast},c)$
+-9.5381 $E(s,a)$
+0.9099 $E(p,a)$
+7.4099 $E(s^{\ast},a)$
+-5.6052 $V(s,s)$
+1.8398 $V(x,x)$
+1.4693 $V(x,y)$
+3.0354 $V(sa,pc)$
+5.4389 $V(pa,sc)$
+3.3744 $V(s^{\ast}a,pc)$
+3.9097 $V(pa,s^{\ast}c)$
+0.0000 $V(s^{\ast},s^{\ast})$
+2.62 d=bondlength in Angstrom
+
+-3.8993 $E(s,c)$
+2.9146 $E(p,c)$
+5.9846 $E(s^{\ast},c)$
+-7.3207 $E(s,a)$
+0.8554 $E(p,a)$
+6.6354 $E(s^{\ast},a)$
+-6.1567 $V(s,s)$
+1.5789 $V(x,x)$
+1.1285 $V(x,y)$
+4.9601 $V(sa,pc)$
+4.6675 $V(pa,sc)$
+4.9895 $V(s^{\ast}a,pc)$
+4.2180 $V(pa,s^{\ast}c)$
+0.0000 $V(s^{\ast},s^{\ast})$
+2.64 d=bondlength in Angstrom
+
+Table 2.1: OVER: Empirical matrix elements of the $sp3s^\*$ Hamiltonian in eV for InAs.
+UNDER: Empirical matrix elements of the $sp3s^\*$ Hamiltonian in eV for GaSb.
+
+32
+<!-- SLUTT SIDE 3 -->
+
+<!-- START SIDE 4 -->
+-2.0716 $E(s,c)$
+3.0163 $E(p,c)$
+6.1543 $E(s^{\ast},c)$
+-6.1714 $E(s,a)$
+0.9807 $E(p,a)$
+6.7607 $V(s^{\ast},a)$
+-5.6448 $V(s,s)$
+1.7199 $V(x,x)$
+3.6648 $V(x,y)$
+4.9121 $V(sa,pc)$
+4.2137 $V(pa,sc)$
+4.3662 $V(s^{\ast}a,pc)$
+3.0739 $V(pa,s^{\ast}c)$
+0.0000 $V(s^{\ast},s^{\ast})$
+2.66 d=bondlength in Angstrom
+
+-3.4643 $E(s,c)$
+2.9162 $E(p,c)$
+5.9362 $E(s^{\ast},c)$
+-8.0157 $E(s,a)$
+0.6738 $E(p,a)$
+6.4530 $E(s^{\ast},a)$
+-5.5193 $V(s,s)$
+1.4018 $V(x,x)$
+3.8761 $V(x,y)$
+3.7880 $V(sa,pc)$
+4.5900 $V(pa,sc)$
+3.5666 $V(s^{\ast}a,pc)$
+3.4048 $V(pa,s^{\ast}c)$
+0.0000 $V(s^{\ast},s^{\ast})$
+2.81 d=bondlength in Angstrom
 
 Table 2.2: OVER: Empirical matrix elements of the 
 
@@ -141,28 +184,13 @@ $$
  model have elements that deal with the energy of the orbitals at anion and cation layers. For the cations we get:
 
 $$
-
-$$
-
 \begin{aligned}
 E_c(1) = E(s,c) = \langle s,c, \vec{R}|H|s,c, \vec{R} \rangle \\
 E_c(2) = E(p,c) = \langle p,c, \vec{R}|H|p,c, \vec{R} \rangle \\
-E_c(3) = E(p,c) = \langle p,c, \vec{R}|H|p,c, \vec{R} \rangle
-
-\end{aligned}
-
-$$
-
-$$
-
-\begin{aligned}
+E_c(3) = E(p,c) = \langle p,c, \vec{R}|H|p,c, \vec{R} \rangle \\
 E_c(4) = E(p,c) = \langle p,c, \vec{R}|H|p,c, \vec{R} \rangle \\
 E_c(5) = E(s^{\ast},c) = \langle s^{\ast},c, \vec{R}|H|s^{\ast},c, \vec{R} \rangle
-
 \end{aligned}
-
-$$
-
 $$
 
 (2.4)
@@ -170,28 +198,13 @@ $$
 And for the anions:
 
 $$
-
-$$
-
 \begin{aligned}
 E_a(1) = E(s,a) = \langle s,a, \vec{R}|H|s,a, \vec{R} \rangle \\
 E_a(2) = E(p,a) = \langle p,a, \vec{R}|H|p,a, \vec{R} \rangle \\
-E_a(3) = E(p,a) = \langle p,a, \vec{R}|H|p,a, \vec{R} \rangle
-
-\end{aligned}
-
-$$
-
-$$
-
-\begin{aligned}
+E_a(3) = E(p,a) = \langle p,a, \vec{R}|H|p,a, \vec{R} \rangle \\
 E_a(4) = E(p,a) = \langle p,a, \vec{R}|H|p,a, \vec{R} \rangle \\
 E_a(5) = E(s^{\ast},a) = \langle s^{\ast},a, \vec{R}|H|s^{\ast},a, \vec{R} \rangle
-
 \end{aligned}
-
-$$
-
 $$
 
 (2.5)
@@ -205,68 +218,35 @@ As long as we deal with pure materials we now only need to put in the correct me
 The so called hopping matrices are build up from VCA parameters that are features that say something about the potential difference between states at closest neighbour lattice points. I use two kinds of hopping matrices, the $V_{hopping}$ matrices that deals with hopping between latticepoints (between the monolayers in the structure), and the $U_{hopping}$ matrices that concerns hopping between the anion and cation inside the same monolayer. The hopping matrices in the $sp^3s^{\ast}$ model are of dimension $5 \cdot 5$, and their elements are defined in the equations below. Before writing down the elements for the four matrices I will define four trigonometric functions, c1, c2, s1 and s2 that comes out as parts of the solutions for the matrix elements.
 
 $$
-
-$$
-
 \begin{aligned}
 s1 = i \cdot \sin((ky + kz) \cdot a/4)/2 \\
-s2 = i \cdot \sin((ky - kz) \cdot a/4)/2
-
-\end{aligned}
-
-$$
-
-$$
-
-\begin{aligned}
+s2 = i \cdot \sin((ky - kz) \cdot a/4)/2 \\
 c1 = \cos((ky + kz) \cdot a/4)/2 \\
 c2 = \cos((ky - kz) \cdot a/4)/2 \quad (2.6)
-
 \end{aligned}
-
-$$
-
 $$
 
 Here $i$ is the imaginary constant.
 I will start with the elements of the Uca matrix with cosinus like solutions:
 
 $$
-
-$$
-
 \begin{aligned}
 Uca(1,1) = V(s,s) \cdot c2 = 4 \cdot c2 \langle s, a, \vec{R}|H|s, c, \vec{R} \rangle \\
 Uca(1,2) = V(pa,sc) \cdot c2 = 4 \cdot c2 \langle p, a, \vec{R}|H|s, c, \vec{R} \rangle \\
 Uca(2,1) = -V(sa,pc) \cdot c2 = -4 \cdot c2 \langle s, a, \vec{R}|H|px, c, \vec{R} \rangle \\
 Uca(2,2) = V(x,x) \cdot c2 = 4 \cdot c2 \langle px, a, \vec{R}|H|px, c, \vec{R} \rangle \\
-Uca(2,5) = -V(s^{\ast}a,pc) \cdot c2 = -4 \cdot c2 \langle s^{\ast}, a, \vec{R}|H|p, c, \vec{R} \rangle
-
-\end{aligned}
-
-$$
-
-$$
-
-\begin{aligned}
+Uca(2,5) = -V(s^{\ast}a,pc) \cdot c2 = -4 \cdot c2 \langle s^{\ast}, a, \vec{R}|H|p, c, \vec{R} \rangle \\
 Uca(3,3) = V(x,x) \cdot c2 = 4 \cdot c2 \langle px, a, \vec{R}|H|px, c, \vec{R} \rangle \\
 Uca(3,4) = -V(x,y) \cdot c2 = -4 \cdot c2 \langle px, a, \vec{R}|H|py, c, \vec{R} \rangle \\
 Uca(4,4) = V(x,x) \cdot c2 = 4 \cdot c2 \langle px, a, \vec{R}|H|px, c, \vec{R} \rangle \\
 Uca(5,2) = V(pa,s^{\ast}c) \cdot c2 = 4 \cdot c2 \langle px, a, \vec{R}|H|s^{\ast}, c, \vec{R} \rangle \\
 Uca(5,5) = (0,0) \quad (2.7)
-
 \end{aligned}
-
-$$
-
 $$
 
 And for the matrix elements with sinus like solutions:
 
 $$
-
-$$
-
 \begin{aligned}
 Uca(1,3) = V(pa,sc) \cdot s2 = 4 \cdot s2 \langle p, a, \vec{R}|H|s, c, \vec{R} \rangle \\
 Uca(1,4) = -V(pa,sc) \cdot s2 = -4 \cdot s2 \langle p, a, \vec{R}|H|s, c, \vec{R} \rangle \\
@@ -274,15 +254,7 @@ Uca(1,5) = (0.0\text{d}0, 0.0\text{d}0) \\
 Uca(2,3) = V(x,y) \cdot s2 = 4 \cdot s2 \langle px, a, \vec{R}|H|py, c, \vec{R} \rangle \\
 Uca(2,4) = -V(x,y) \cdot s2 = -4 \cdot s2 \langle px, a, \vec{R}|H|py, c, \vec{R} \rangle \\
 Uca(3,1) = -V(sa,pc) \cdot s2 = -4 \cdot s2 \langle s, a, \vec{R}|H|px, c, \vec{R} \rangle \\
-Uca(3,2) = V(x,y) \cdot s2 = 4 \cdot s2 \langle px, a, \vec{R}|H|py, c, \vec{R} \rangle
-
-\end{aligned}
-
-$$
-
-$$
-
-\begin{aligned}
+Uca(3,2) = V(x,y) \cdot s2 = 4 \cdot s2 \langle px, a, \vec{R}|H|py, c, \vec{R} \rangle \\
 Uca(3,5) = -V(s^{\ast}a,pc) \cdot s2 = -4 \cdot s2 \langle s^{\ast}, a, \vec{R}|H|px, c, \vec{R} \rangle \\
 Uca(4,1) = V(sa,pc) \cdot s2 = 4 \cdot s2 \langle s, a, \vec{R}|H|px, c, \vec{R} \rangle \\
 Uca(4,2) = -V(x,y) \cdot s2 = -4 \cdot s2 \langle px, a, \vec{R}|H|py, c, \vec{R} \rangle \\
@@ -290,11 +262,7 @@ Uca(4,5) = V(x,y) \cdot s2 = 4 \cdot s2 \langle px, a, \vec{R}|H|px, c, \vec{R} 
 Uca(5,1) = (0,0) \\
 Uca(5,3) = V(pa,s^{\ast}c) \cdot c2 = 4 \cdot c2 \langle px, a, \vec{R}|H|s^{\ast}, c, \vec{R} \rangle \\
 Uca(5,4) = -V(pa,s^{\ast}c) \cdot s2 = -4 \cdot s2 \langle px, a, \vec{R}|H|s^{\ast}, c, \vec{R} \rangle \quad (2.8)
-
 \end{aligned}
-
-$$
-
 $$
 
 The other U-matrix, the matrix for electrons hopping the opposite direction between anions
@@ -306,9 +274,6 @@ For hopping between different monolayers / lattice points we use so called V-mat
 First I define the elements with cosinus solutions:
 
 $$
-
-$$
-
 \begin{aligned}
 Vca(1,1) &= V(s,s)*cl = 4*cl \langle s, a, \vec{R}|H|s, c, \vec{R} \rangle \\
 Vca(1,2) &= -V(pa,sc)*cl = -4*cl \langle p, a, \vec{R}|H|s, c, \vec{R} \rangle \\
@@ -316,60 +281,33 @@ Vca(1,5) &= (0,0) \\
 Vca(2,1) &= V(sa,pc)*cl = 4*cl \langle s, a, \vec{R}|H|px, c, \vec{R} \rangle \\
 Vca(2,2) &= V(x,x)*cl = 4*cl \langle px, a, \vec{R}|H|px, c, \vec{R} \rangle \\
 Vca(2,5) &= V(s^{\ast}a,pc)*cl = 4*cl \langle s^{\ast}, a, \vec{R}|H|px, c, \vec{R} \rangle \\
-Vca(3,3) &= V(x,x)*cl = 4*cl \langle px, a, \vec{R}|H|px, c, \vec{R} \rangle
-
-\end{aligned}
-
-$$
-
-$$
-
-\begin{aligned}
+Vca(3,3) &= V(x,x)*cl = 4*cl \langle px, a, \vec{R}|H|px, c, \vec{R} \rangle \\
 Vca(3,4) &= V(x,y)*cl = 4*cl \langle px, a, \vec{R}|H|py, c, \vec{R} \rangle \\
 Vca(4,3) &= V(x,y)*cl = 4*cl \langle px, a, \vec{R}|H|py, c, \vec{R} \rangle \\
 Vca(4,4) &= V(x,x)*cl = 4*cl \langle px, a, \vec{R}|H|px, c, \vec{R} \rangle \\
 Vca(5,1) &= (0,0) \\
 Vca(5,2) &= -V(pa,s^{\ast}c)*cl = -4*cl \langle px, a, \vec{R}|H|s^{\ast}, c, \vec{R} \rangle \\
 Vca(5,5) &= (0,0) \quad (2.9)
-
 \end{aligned}
-
-$$
-
 $$
 
 Then I define the elements with sinus like solutions:
 
 $$
-
-$$
-
 \begin{aligned}
 Vca(1,3) &= V(pa,sc)*s1 = 4*s1 \langle p, a, \vec{R}|H|s, c, \vec{R} \rangle \\
 Vca(1,4) &= V(pa,sc)*s1 = 4*s1 \langle p, a, \vec{R}|H|s, c, \vec{R} \rangle \\
 Vca(2,3) &= -V(x,y)*s1 = -4*s1 \langle px, a, \vec{R}|H|py, c, \vec{R} \rangle \\
 Vca(2,4) &= -V(x,y)*s1 = -4*s1 \langle px, a, \vec{R}|H|py, c, \vec{R} \rangle \\
 Vca(3,1) &= -V(sa,pc)*s1 = -4*s1 \langle s, a, \vec{R}|H|px, c, \vec{R} \rangle \\
-Vca(3,2) &= -V(x,y)*s1 = -4*s1 \langle px, a, \vec{R}|H|py, c, \vec{R} \rangle
-
-\end{aligned}
-
-$$
-
-$$
-
-\begin{aligned}
+Vca(3,2) &= -V(x,y)*s1 = -4*s1 \langle px, a, \vec{R}|H|py, c, \vec{R} \rangle \\
 Vca(3,5) &= V(s^{\ast}a,pc)*s1 = -4*s1 \langle s^{\ast}, a, \vec{R}|H|px, c, \vec{R} \rangle \\
 Vca(4,1) &= -V(sa,pc)*s1 = -4*s1 \langle s, a, \vec{R}|H|px, c, \vec{R} \rangle \\
 Vca(4,2) &= -V(x,y)*s1 = -4*s1 \langle px, a, \vec{R}|H|py, c, \vec{R} \rangle \\
 Vca(4,5) &= V(s^{\ast}a,pc)*s1 = -4*s1 \langle s^{\ast}, a, \vec{R}|H|px, c, \vec{R} \rangle \\
 Vca(5,3) &= V(pa,s^{\ast}c)*s1 = 4*s1 \langle px, a, \vec{R}|H|s^{\ast}, c, \vec{R} \rangle \\
 Vca(5,4) &= V(pa,s^{\ast}c)*s1 = 4*s1 \langle px, a, \vec{R}|H|s^{\ast}, c, \vec{R} \rangle \quad (2.10)
-
 \end{aligned}
-
-$$
-
 $$
 
 Also for the V-matrix, the other alternative, the one for going the opposite direction between lattice points, is the complex conjugate of the first one.
