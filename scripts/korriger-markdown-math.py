@@ -4,58 +4,55 @@ import re
 
 def split_matrix_block(content):
     """
-    Finner tabeller/matriser i teksten og splitter rader som har 
-    mange elementer inn i to adskilte, renere tabeller.
+    Finner lange tabeller/matriser i teksten og splitter dem 
+    på midten til to uavhengige, kortere tabeller under hverandre.
     """
-    # Regex som fanger opp innholdet mellom \begin{array}... og \end{array} 
-    # eller \begin{aligned}... og \end{aligned}
+    # Fanger opp innholdet mellom \begin{array}... og \end{array} eller \begin{aligned}... og \end{aligned}
     pattern = r'\\begin\{(array|aligned)\}(.*?)\\end\{\1\}'
     
     def replacer(match):
-        env_type = match.group(1)
         block_inner = match.group(2).strip()
         
-        # Splitter innholdet inn i enkeltlinjer
-        lines = [line.strip() for line in block_inner.split('\\\\') if line.strip()]
+        # Finn alle linjer basert på enten doble backslasher (\\) eller rene linjeskift
+        # Fjerner tomme linjer
+        raw_lines = [line.strip() for line in block_inner.split('\\\\') if line.strip()]
+        if not raw_lines:
+            # Prøv vanlig linjeskift hvis \\ ikke ble brukt mellom radene
+            raw_lines = [line.strip() for line in block_inner.split('\n') if line.strip()]
+
+        clean_lines = []
+        for line in raw_lines:
+            # Rens unna HTML-entiteter her også for sikkerhets skyld
+            cleaned = line.replace("&amp;", "&")
+            clean_lines.append(cleaned)
+
+        totalt_antall_rader = len(clean_lines)
         
-        tabell1_rader = []
-        tabell2_rader = []
-        
-        for line in lines:
-            # Fjern eventuelle HTML-entiteter som har overlevd
-            line = line.replace('&amp;', '&')
-            
-            # Splitter linjen på '&' tegnene for å isolere elementene
-            # En typisk ødelagt linje ser ut som: E(s, b) & = verdi1 & E(p, b) & = verdi2
-            parts = [p.strip() for p in line.split('&') if p.strip()]
-            
-            # Hvis linjen inneholder nok elementer til å splittes i to par (f.eks. symbol1, verdi1, symbol2, verdi2)
-            if len(parts) >= 4:
-                # Første tabell får de to første elementene (f.eks. "E(s, b)" og "= verdi1")
-                tabell1_rader.append(f"{parts[0]} & {parts[1]}")
-                # Andre tabell får de to neste elementene (f.eks. "E(p, b)" og "= verdi2")
-                tabell2_rader.append(f"{parts[2]} & {parts[3]}")
-            elif len(parts) >= 2:
-                # Hvis linjen er kort, legger vi den bare i den første tabellen
-                tabell1_rader.append(f"{parts[0]} & {parts[1]}")
-        
-        # Hvis vi ikke klarte å splitte noen rader, returnerer vi bare originalen uforandret
-        if not tabell2_rader:
+        # Hvis tabellen har mindre enn 4 rader totalt, er det ingen vits i å splitte den
+        if totalt_antall_rader < 4:
             return match.group(0)
             
-        # Konstruer to adskilte, pene aligned-tabeller for Docusaurus
+        # Finn midtpunktet for splittingen
+        midtpunkt = (totalt_antall_rader + 1) // 2
+        
+        tabell1_rader = clean_lines[:midtpunkt]
+        tabell2_rader = clean_lines[midtpunkt:]
+        
+        # Bygg opp de to nye adskilte tabellene med Docusaurus-kompatibel $$ \begin{aligned}
         output = []
+        
         output.append("$$\n\\begin{aligned}")
         output.append(" \\\\\n".join(tabell1_rader))
-        output.append("\\end{aligned}\n$$\n")
+        output.append("\n\\end{aligned}\n$$\n")
         
         output.append("$$\n\\begin{aligned}")
         output.append(" \\\\\n".join(tabell2_rader))
-        output.append("\\end{aligned}\n$$")
+        output.append("\n\\end{aligned}\n$$")
         
         return "\n".join(output)
 
     return re.sub(pattern, replacer, content, flags=re.DOTALL)
+
 
 def fix_markdown_math(file_path):
     if not os.path.exists(file_path):
