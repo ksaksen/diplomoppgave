@@ -13,12 +13,32 @@ def fix_markdown_math(file_path):
     # Normaliser linjeskift til standard unix \n for pålitelig regex-matching
     content = content.replace("\r\n", "\n")
 
+    # =========================================================================
+    # NYTT TRINN: STRUKTURELL RENSING (FØR MATEMATIKK-PROSESSERING)
+    # =========================================================================
+    
+    # 1. Erstatt HTML-entiteter som &amp; inni formler med ekte tegn
+    content = content.replace("&amp;", "&")
+
+    # 2. Fiks den ødelagte "s^_" og "s^_a" syntaksen til korrekt s-stjerne LaTeX
+    content = content.replace("s^_-", "s^*")
+    content = content.replace("s^_", "s^*")
+    content = content.replace("s^*_a", "s^*_a") # Bevarer indeks om nødvendig
+
+    # 3. Fiks feilformaterte orbitalnavn i ren tekst (f.eks. sp3s* eller s p 3 s *)
+    # Endrer "sp3s*" eller "sp3s^*" til pen inline LaTeX: $sp^3s^*$
+    content = re.sub(r'\bsp3s\s*\*+', r'$sp^3s^*$', content)
+    content = re.sub(r'\bsp3s\s*\^\*', r'$sp^3s^*$', content)
+    content = re.sub(r'\bs\s+p\s+3\s+s\s*\*+', r'$sp^3s^*$', content)
+
+    # =========================================================================
+    # TRADISJONELLE TRINN (OPPDATERT)
+    # =========================================================================
+
     # Trinn 1: Erstatt \tag{x} med \quad (x) for Docusaurus-kompatibilitet
     content = re.sub(r'\s*\\tag\{([^}]+)\}', r' \\quad (\1)', content)
 
-    # Trinn 2: Erstatt naken ^* med ^{*} overalt i all matematikk ($...$  og $$...$$)
-    # Behandler inline-math ($...$) og block-math ($$...$$) separat via en felles regex.
-    # Matcher ^* kun der * IKKE allerede er inni {}, dvs. ikke ^{*} allerede.
+    # Trinn 2: Erstatt naken ^* med ^{*} overalt i all matematikk ($...$ og $$...$$)
     def fix_caret_star(math_content):
         # Beskytt allerede innpakkede ^{\ast} med en placeholder
         protected = math_content.replace('^{\\ast}', '\x00CARET_STAR\x00')
@@ -35,8 +55,7 @@ def fix_markdown_math(file_path):
         flags=re.DOTALL
     )
 
-    # Trinn 2: Splitt enkeltlinje-blokkformler ($$ formel $$) til flerlinje-formler
-    # Slik at åpnings- og lukkemarkørene ($$) står på egne linjer for GitHub
+    # Trinn 2b: Splitt enkeltlinje-blokkformler ($$ formel $$) til flerlinje-formler
     pattern_single_line = r'(?m)^\s*\$\$(.+?)\$\$\s*$'
 
     def split_single_line(match):
@@ -45,7 +64,7 @@ def fix_markdown_math(file_path):
 
     content_fixed_lines = re.sub(pattern_single_line, split_single_line, content)
 
-    # Trinn 2: Finn alle $$ ... $$ blokker, pakk dem inn i aligned-miljøet om nødvendig,
+    # Trinn 2c: Finn alle $$ ... $$ blokker, pakk dem inn i aligned-miljøet om nødvendig,
     # og sørg for at de er polstret med tomme linjer før og etter seg.
     pattern_block = r'(?s)\$\$(.*?)\$\$'
     
