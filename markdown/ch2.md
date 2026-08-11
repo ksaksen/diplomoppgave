@@ -7,142 +7,83 @@ Energy vectors, hopping matrices, surface Green matrices and the local elements 
 
 In this chapter I will present the VCA parameters, measured by Vogl, Hjalmarson and Dow, presented in article [1]. That is, only for the materials I use in this diploma work. I will show how to use these parameters to make characteristic features for the materials such as energy vectors and hopping matrices. Further I will try to show how one uses the features mentioned above to find surface Green matrices for the materials. I hope this kind of matrices is known from the theory chapter, chapter 1. So, the actual content of this chapter will be an attempt to link the theory to the VCA parameters from article [1]. That is, the content of this chapter gives the formula for the features that is needed to compute transport Green matrices, and relates those formulas to the empirical data given in article [1].
 
-## 2.1 The content of the Vogl files
+## 
+### Matriseelementer
+| Element / Parameter | Verdi (eV) |
+| :--- | :--- |
+| $$E(s,c)$$ | -2.7219 |
+| $$E(p,c)$$ | 3.7201 |
+| $$E(s^{\ast},c)$$ | 6.7401 |
+| $$E(s,a)$$ | -9.5381 |
+| $$E(p,a)$$ | 0.9099 |
+| $$E(s^{\ast},a)$$ | 7.4099 |
+| $$V(s,s)$$ | -5.6052 |
+| $$V(x,x)$$ | 1.8398 |
+| $$V(x,y)$$ | 1.4693 |
+| $$V(sa,pc)$$ | 3.0354 |
+| $$V(pa,sc)$$ | 5.4389 |
+| $$V(s^{\ast}a,pc)$$ | 3.3744 |
+| $$V(pa,s^{\ast}c)$$ | 3.9097 |
+| $$V(s^{\ast},s^{\ast})$$ | 0.0000 |
+| $d$ (bond length) | 2.62 Å |
 
-The Hamiltonian for the 1-D single band system is written as in equation 1.12,
+### Matriseelementer
+| Element / Parameter | Verdi (eV) |
+| :--- | :--- |
+| $$E(s,c)$$ | -3.8993 |
+| $$E(p,c)$$ | 2.9146 |
+| $$E(s^{\ast},c)$$ | 5.9846 |
+| $$E(s,a)$$ | -7.3207 |
+| $$E(p,a)$$ | 0.8554 |
+| $$E(s^{\ast},a)$$ | 6.6354 |
+| $$V(s,s)$$ | -6.1567 |
+| $$V(x,x)$$ | 1.5789 |
+| $$V(x,y)$$ | 1.1285 |
+| $$V(sa,pc)$$ | 4.9601 |
+| $$V(pa,sc)$$ | 4.6675 |
+| $$V(s^{\ast}a,pc)$$ | 4.9895 |
+| $$V(pa,s^{\ast}c)$$ | 4.2180 |
+| $$V(s^{\ast},s^{\ast})$$ | 0.0000 |
+| $d$ (bond length) | 2.64 Å |
 
-$$
-H = \sum_j |j \rangle \epsilon_0 \langle j| + |j \rangle u \langle j \pm 1| \quad (2.1)
-$$
+Table 
+### InAs Matriseelementer
+| Element / Parameter | Verdi (eV) |
+| :--- | :--- |
+| $$E(s,c)$$ | -2.0716 |
+| $$E(p,c)$$ | 3.0163 |
+| $$E(s^{\ast},c)$$ | 6.1543 |
+| $$E(s,a)$$ | -6.1714 |
+| $$E(p,a)$$ | 0.9807 |
+| $$V(s^{\ast},a)$$ | 6.7607 |
+| $$V(s,s)$$ | -5.6448 |
+| $$V(x,x)$$ | 1.7199 |
+| $$V(x,y)$$ | 3.6648 |
+| $$V(sa,pc)$$ | 4.9121 |
+| $$V(pa,sc)$$ | 4.2137 |
+| $$V(s^{\ast}a,pc)$$ | 4.3662 |
+| $$V(pa,s^{\ast}c)$$ | 3.0739 |
+| $$V(s^{\ast},s^{\ast})$$ | 0.0000 |
+| $d$ (bond length) | 2.66 Å |
 
-In the 
-
-$$
-sp^3s^{\ast}
-$$
-
- model we have 13 independent matrix elements to build up the energy vectors and the hopping matrices, equation 1.64:
-
-30
-<!-- SLUTT SIDE 1 -->
-
-<!-- START SIDE 2 -->
-
-$$
-
-$$
-
-\begin{aligned}
-{ll}
-E(s, b) & = \langle s, b, \vec{R} | H | s, b, \vec{R} \rangle \\
-E(p, b) & = \langle p, b, \vec{R} | H | p, b, \vec{R} \rangle \\
-E(s^{\ast}, b) & = \langle s^{\ast}, b, \vec{R} | H | s^{\ast}, b, \vec{R} \rangle \\
-V(s, s) & = 4 \langle s, a, \vec{R} | H | s, c, \vec{R} \rangle \\
-V(x, x) & = 4 \langle px, a, \vec{R} | H | px, c, \vec{R} \rangle
-
-\end{aligned}
-
-$$
-
-$$
-
-\begin{aligned}
-V(x, y) & = 4 \langle px, a, \vec{R} | H | py, c, \vec{R} \rangle \\
-V(sa, pc) & = 4 \langle s, a, \vec{R} | H | px, c, \vec{R} \rangle \\
-V(pa, sc) & = 4 \langle p, a, \vec{R} | H | s, c, \vec{R} \rangle \\
-V(s^{\ast}a, pc) & = 4 \langle s^{\ast}, a, \vec{R} | H | px, c, \vec{R} \rangle \\
-V(pa, s^{\ast}c) & = 4 \langle px, a, \vec{R} | H | s^{\ast}, c, \vec{R} \rangle
-
-\end{aligned}
-
-$$
-\quad (2.2)
-$$
-
-The 3 first lines represent 6 independent elements when we insert values for $b$; anion or cation. In this approximation $s^{\ast}s$ and $s^{\ast}s^{\ast}$ elements are set to zero.
-As only nearest neighbors are interacting, the $sp^3s^{\ast}$ model then has a Hamilton operator as follows:
-
-$$
-H = \sum_{n,b,i} |n, b, \vec{R}_i \rangle E(n,b) \langle n, b, \vec{R}_i | + \sum_{n,b,j=i+\frac{a}{4}(1,1,1)} |n, b, \vec{R}_i \rangle V \langle n, b, \vec{R}_j | \quad (2.3)
-$$
-
-As mentioned earlier I use VCA parameters for pure materials measured by Vogl as a basis for my calculations. Except from in the calculations of some offsets, where I have considered not only bandgaps that I find from these VCA parameters but also the bandgaps given in the article written by Y.H.Wang, M.H.Lium, M.P.Houng, J.F.Chen and A.Y.Cho, article [2].
-For the materials involved in this diplomawork we have the VCA parameters that is given in tables 2.1, 2.2 and 2.3.
-In article [1] $V(s^{\ast}, s^{\ast})$ is included even though it's value is measured to be zero. I have also included the bondlengths to the set of features that is presented in equations 1.64, see at the end of the list. These bondlengths are also found from article [1].
-Tables 2.1 and the table on top in table 2.2 gives the needed VCA parameters for the layers of the structure that I work with. But, due to my calculation method I also need the VCA parameters in tables on bottom of 2.2 and table 2.3. The content of these tables is the empirical data for the materials one can say that there is one monolayer of at every boundary between different material layers. For the realisations of the structure in my diplomawork we find $AlAs$ and $InSb$ as new materials at the boundaries.
-<!-- SLUTT SIDE 2 -->
-
-<!-- START SIDE 3 -->
--2.7219 $E(s,c)$
-3.7201 $E(p,c)$
-6.7401 $E(s^{\ast},c)$
--9.5381 $E(s,a)$
-0.9099 $E(p,a)$
-7.4099 $E(s^{\ast},a)$
--5.6052 $V(s,s)$
-1.8398 $V(x,x)$
-1.4693 $V(x,y)$
-3.0354 $V(sa,pc)$
-5.4389 $V(pa,sc)$
-3.3744 $V(s^{\ast}a,pc)$
-3.9097 $V(pa,s^{\ast}c)$
-0.0000 $V(s^{\ast},s^{\ast})$
-2.62 d=bondlength in Angstrom
-
--3.8993 $E(s,c)$
-2.9146 $E(p,c)$
-5.9846 $E(s^{\ast},c)$
--7.3207 $E(s,a)$
-0.8554 $E(p,a)$
-6.6354 $E(s^{\ast},a)$
--6.1567 $V(s,s)$
-1.5789 $V(x,x)$
-1.1285 $V(x,y)$
-4.9601 $V(sa,pc)$
-4.6675 $V(pa,sc)$
-4.9895 $V(s^{\ast}a,pc)$
-4.2180 $V(pa,s^{\ast}c)$
-0.0000 $V(s^{\ast},s^{\ast})$
-2.64 d=bondlength in Angstrom
-
-Table 2.1: OVER: Empirical matrix elements of the $sp3s^\*$ Hamiltonian in eV for InAs.
-UNDER: Empirical matrix elements of the $sp3s^\*$ Hamiltonian in eV for GaSb.
-
-32
-<!-- SLUTT SIDE 3 -->
-
-<!-- START SIDE 4 -->
--2.0716 $E(s,c)$
-3.0163 $E(p,c)$
-6.1543 $E(s^{\ast},c)$
--6.1714 $E(s,a)$
-0.9807 $E(p,a)$
-6.7607 $V(s^{\ast},a)$
--5.6448 $V(s,s)$
-1.7199 $V(x,x)$
-3.6648 $V(x,y)$
-4.9121 $V(sa,pc)$
-4.2137 $V(pa,sc)$
-4.3662 $V(s^{\ast}a,pc)$
-3.0739 $V(pa,s^{\ast}c)$
-0.0000 $V(s^{\ast},s^{\ast})$
-2.66 d=bondlength in Angstrom
-
--3.4643 $E(s,c)$
-2.9162 $E(p,c)$
-5.9362 $E(s^{\ast},c)$
--8.0157 $E(s,a)$
-0.6738 $E(p,a)$
-6.4530 $E(s^{\ast},a)$
--5.5193 $V(s,s)$
-1.4018 $V(x,x)$
-3.8761 $V(x,y)$
-3.7880 $V(sa,pc)$
-4.5900 $V(pa,sc)$
-3.5666 $V(s^{\ast}a,pc)$
-3.4048 $V(pa,s^{\ast}c)$
-0.0000 $V(s^{\ast},s^{\ast})$
-2.81 d=bondlength in Angstrom
+### Matriseelementer
+| Element / Parameter | Verdi (eV) |
+| :--- | :--- |
+| $$E(s,c)$$ | -3.4643 |
+| $$E(p,c)$$ | 2.9162 |
+| $$E(s^{\ast},c)$$ | 5.9362 |
+| $$E(s,a)$$ | -8.0157 |
+| $$E(p,a)$$ | 0.6738 |
+| $$E(s^{\ast},a)$$ | 6.4530 |
+| $$V(s,s)$$ | -5.5193 |
+| $$V(x,x)$$ | 1.4018 |
+| $$V(x,y)$$ | 3.8761 |
+| $$V(sa,pc)$$ | 3.7880 |
+| $$V(pa,sc)$$ | 4.5900 |
+| $$V(s^{\ast}a,pc)$$ | 3.5666 |
+| $$V(pa,s^{\ast}c)$$ | 3.4048 |
+| $$V(s^{\ast},s^{\ast})$$ | 0.0000 |
+| $d$ (bond length) | 2.81 Å |
 
 Table 2.2: OVER: Empirical matrix elements of the 
 
